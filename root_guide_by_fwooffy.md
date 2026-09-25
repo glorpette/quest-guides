@@ -5,7 +5,7 @@
 This guide starts with a normally set up headset and a Windows PC. It explains the Meta developer account, USB driver, ADB, the compatibility check, installation, rooting, and a final root test.
 
 > [!IMPORTANT]
-> **Document status:** Based on the supplied guide and project/official documentation checked **24 Sep 2026**. Because the project can change quickly, re-check its README and newest release before repeating these steps or updating the headset.
+> **Guide by Fwooffy.** Project and official documentation were checked on **24 Sep 2026**. Because the project can change quickly, re-check its README and newest release before repeating these steps or updating the headset.
 
 ## Table of contents
 
@@ -22,8 +22,7 @@ This guide starts with a normally set up headset and a Windows PC. It explains t
   - [Official Meta setup](#official-meta-setup)
   - [Official Android tools](#official-android-tools)
   - [Scope of this guide](#scope-of-this-guide)
-
-<!-- PDF page 1 -->
+- [Credits and source policy](#credits-and-source-policy)
 
 ## What you need
 
@@ -38,11 +37,7 @@ This guide starts with a normally set up headset and a Windows PC. It explains t
 > [!CAUTION]
 > Root gives apps administrator-level access. Singularity is an experimental, third-party exploit and may cause crashes or data loss. A system update can change whether it works. **Do not install or press Root Now until your exact headset and firmware build are confirmed by the current project information.**
 
-<sub>PDF page 1 of 8</sub>
-
 ---
-
-<!-- PDF page 2 -->
 
 ## 1. Set up Developer Mode
 
@@ -79,11 +74,7 @@ The USB debugging prompt appears when you connect the PC in [Step 3](#3-connect-
 
 Official setup: Meta's **Device Setup** and **Test your app on your device** pages are linked in [Useful links and notes](#useful-links-and-notes).
 
-<sub>Singularity beginner guide · Checked 24 Sep 2026 · PDF page 2 of 8</sub>
-
 ---
-
-<!-- PDF page 3 -->
 
 ## 2. Install ADB on Windows
 
@@ -122,11 +113,7 @@ adb version
 > [!TIP]
 > **If `adb` is not recognized:** The Command Prompt probably opened in the wrong folder. Reopen the folder that contains `adb.exe`, click its address bar, type `cmd`, and try again.
 
-<sub>Singularity beginner guide · Checked 24 Sep 2026 · PDF page 3 of 8</sub>
-
 ---
-
-<!-- PDF page 4 -->
 
 ## 3. Connect and check your build
 
@@ -173,11 +160,7 @@ adb shell getprop ro.build.version.incremental
 
 Quest 1 and other variants have separate or less documented setup; do not use the shared **Root Now** steps below for them without current model-specific instructions.
 
-<sub>Singularity beginner guide · Checked 24 Sep 2026 · PDF page 4 of 8</sub>
-
 ---
-
-<!-- PDF page 5 -->
 
 ## 4. Install Singularity
 
@@ -214,11 +197,7 @@ Tap **Setup Wireless ADB** in Singularity and follow its in-app guide in order. 
 > [!CAUTION]
 > **Continue with Step 5, but do not press Root Now yet.** Complete the permission or pairing prompts and confirm the in-app Wireless ADB connection first.
 
-<sub>Singularity beginner guide · Checked 24 Sep 2026 · PDF page 5 of 8</sub>
-
 ---
-
-<!-- PDF page 6 -->
 
 ## 5. Set up Wireless ADB
 
@@ -244,11 +223,7 @@ Press **Root Now** and let the app finish. If it reports failure and offers **Re
 > [!WARNING]
 > **After a successful soft reboot:** A successful root should trigger a soft reboot. **Do not press Root Now again after that success.** Continue to [Step 6](#6-verify-root-and-troubleshoot) to grant Singularity root access and verify it from your PC.
 
-<sub>Singularity beginner guide · Checked 24 Sep 2026 · PDF page 6 of 8</sub>
-
 ---
-
-<!-- PDF page 7 -->
 
 ## 6. Verify root and troubleshoot
 
@@ -286,11 +261,7 @@ adb shell su -c id
 > [!CAUTION]
 > **Keep the first root simple.** Do not install random Magisk modules or phone-focused Android tweaks immediately. Root-level changes can disrupt Horizon OS or controller behavior. Check project release notes before any system update.
 
-<sub>Singularity beginner guide · Checked 24 Sep 2026 · PDF page 7 of 8</sub>
-
 ---
-
-<!-- PDF page 8 -->
 
 ## Useful links and notes
 
@@ -347,6 +318,6 @@ Wireless debugging and pairing code concepts.
 > [!NOTE]
 > This is a Windows first-install walkthrough for Quest 2, Quest Pro, Quest 3, and Quest 3S. The project release notes mention Quest 1 and Quest 3S Xbox Edition, but their applicability and setup should be checked separately with the current maintainer instructions. Nothing here proves a particular headset will root successfully.
 
-**Source note:** The supplied five-page PDF was used as a starting outline. Where it conflicted with current project or official documentation, this guide follows the sources linked above.
+## Credits and source policy
 
-<sub>Singularity beginner guide · Checked 24 Sep 2026 · PDF page 8 of 8</sub>
+This beginner-friendly guide was originally created by **Fwooffy**. It was developed from an earlier outline and checked against the project and official documentation linked above. Where that earlier material conflicted with current project or official documentation, this guide follows the linked sources.
