@@ -1,16 +1,37 @@
 # Meta Quest Rooting Guides
 
-A collection of guides for rooting supported Meta Quest headsets and exploring the enhanced face-tracking possibilities that rooted setups can enable.
+Community-maintained guides for rooting supported Meta Quest headsets and exploring the enhanced face-tracking possibilities that rooted setups can enable.
 
-## Guides
+[**Read the guides online**](https://guides.mxr.lol/) · [**Open the rooting guide**](https://guides.mxr.lol/guides/root-guide/)
 
-- [Root Your Meta Quest with Singularity](root_guide_by_fwooffy.md) - A beginner-friendly Windows guide for Quest 2, Quest Pro, Quest 3, and Quest 3S.
+## Available guides
 
-## Disclaimer
+| Guide | Platforms | Supported headsets | Formats |
+| --- | --- | --- | --- |
+| **Root Your Meta Quest with Singularity** | Windows and Linux | Quest 2, Quest Pro, Quest 3, and Quest 3S | [Website](https://guides.mxr.lol/guides/root-guide/) · [Markdown](root_guide_by_fwooffy.md) |
 
-Rooting is experimental and may cause instability, data loss, or loss of device functionality. Compatibility can change with headset updates. Always confirm support for your exact headset and firmware build before continuing.
+## Read this first
+
+> [!CAUTION]
+> **Rooting is experimental and carries real risk.** It may cause instability, data loss, failed updates, or loss of device functionality. Root-level changes can also disrupt Horizon OS, controller behavior, and installed applications.
+
+> [!IMPORTANT]
+> Compatibility can change after any headset or project update. Before installing anything or selecting **Root Now**, confirm that your **exact headset model and firmware build** are supported by the current Singularity documentation and release notes.
+
+<details>
+<summary><strong>Good safety habits</strong></summary>
+
+- Back up anything you cannot replace.
+- Read the complete guide before beginning.
+- Keep the headset charged and allow enough time to finish without rushing.
+- Avoid random Magisk modules or phone-focused Android tweaks.
+- Re-check compatibility before updating Horizon OS or repeating the process.
+
+</details>
 
 ## Credits
 
-Guides and original research are credited to their respective creators.  
-The Singularity rooting guide was created by [**Fwooffy**](http://github.com/Fwooffy).
+- **Fwooffy** — creator of the original Singularity rooting guide and its research. [GitHub profile](https://github.com/Fwooffy)
+- **otter_oasis** — contributor of the Linux-specific instructions for the rooting guide.
+
+Project software, external research, and referenced documentation remain credited to their respective creators and maintainers.
