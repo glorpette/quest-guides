@@ -47,14 +47,14 @@
       <article class="guide-article">
         <aside id="quest-pro-firmware-update" class="firmware-notice" aria-labelledby="quest-pro-firmware-title">
           <p class="firmware-notice-label">Compatibility alert · Added 25 Sep 2026</p>
-          <h2 id="quest-pro-firmware-title">Quest Pro firmware update rolling out</h2>
-          <p>Meta has pushed out a Quest Pro firmware update. The latest confirmed Quest Pro build in this guide's dated snapshot is <code>51503870024400340</code>. An updated headset may report a newer incremental build, and any different build must be treated as <strong>unconfirmed until the Singularity project or its maintainer explicitly says otherwise</strong>.</p>
+          <h2 id="quest-pro-firmware-title">New Quest Pro firmware patches the root exploit</h2>
+          <p>Meta has patched the vulnerability used by this root exploit in newer Quest Pro firmware. Singularity therefore generally does not work after the headset receives the newer update. The latest confirmed vulnerable Quest Pro build in this guide's dated snapshot is <code>51503870024400340</code>.</p>
           <ul>
             <li>Run <code>adb shell getprop ro.build.version.incremental</code> and record the complete number from your own headset.</li>
-            <li>Do not use a close, older, or previously supported number as evidence that the new firmware is compatible.</li>
-            <li>Do not install Singularity or select <strong>Root Now</strong> unless your exact Quest Pro build is confirmed by the current project README, release notes, or maintainer guidance.</li>
+            <li>If your Quest Pro reports a different or newer build, assume the exploit has been patched and will not work unless the project explicitly confirms otherwise.</li>
+            <li>Do not update, install Singularity, or select <strong>Root Now</strong> unless your exact Quest Pro build is confirmed by the current project README, release notes, or maintainer guidance.</li>
           </ul>
-          <p class="firmware-notice-foot"><strong>Build-number notice:</strong> <code>51503870024400340</code> is the latest confirmed Quest Pro build in the compatibility snapshot checked on 24 Sep 2026. It is retained for historical reference and must not be treated as confirmation for a headset reporting any other build after Meta's update.</p>
+          <p class="firmware-notice-foot"><strong>Build-number notice:</strong> <code>51503870024400340</code> is the latest confirmed vulnerable Quest Pro build in the compatibility snapshot checked on 24 Sep 2026. It must not be treated as confirmation for a headset reporting any other build; newer firmware has patched the exploit.</p>
         </aside>
 
         <section id="before-you-start" class="guide-section">
@@ -78,7 +78,7 @@
           <h2>Set up Developer Mode</h2>
           <p class="section-intro">Developer Mode lets your PC install apps outside the Meta Horizon Store. Use the same Meta account on the headset, phone app, and developer dashboard.</p>
 
-          <aside class="callout caution compact-callout"><h3>Quest Pro: pause before continuing</h3><p>Using the current Developer Mode setup method will force the headset to update before rooting. If you are trying to preserve the confirmed Quest Pro build <code>51503870024400340</code>, <strong>do not continue with these steps yet</strong>. An alternative method that avoids the pre-root update is being investigated; wait for revised guidance before proceeding.</p></aside>
+          <aside class="callout caution compact-callout"><h3>Quest Pro: pause before continuing</h3><p>Using the current Developer Mode setup method will force the headset to update before rooting. Because Meta patched the exploit in newer firmware, that update will generally remove the vulnerable state and prevent Singularity from working. If you are preserving the confirmed vulnerable build <code>51503870024400340</code>, <strong>do not continue with these steps yet</strong>. An alternative method that avoids the pre-root update is being investigated.</p></aside>
 
           <div class="steps">
             <div class="step"><span class="step-number">1</span><div><h3>Finish normal headset setup</h3><p>If the headset is new or reset, complete its normal on-screen setup. Install the Meta Horizon app on your phone, sign in, and pair the headset there.</p></div></div>
@@ -178,7 +178,7 @@
           <h3 class="subsection-title">Dated build snapshot checked on 24 Sep 2026</h3>
           <div class="table-wrap"><table><thead><tr><th>Headset</th><th>Project name</th><th>Incremental build</th></tr></thead><tbody><tr><td>Quest Pro</td><td>Seacliff</td><td><code>51503870024400340</code></td></tr><tr><td>Quest 3</td><td>Eureka</td><td><code>52433670036000520</code></td></tr><tr><td>Quest 3S</td><td>Panther</td><td><code>3814840024700610</code></td></tr><tr><td>Quest 2</td><td>Hollywood</td><td><code>52242990024200150</code></td></tr></tbody></table></div>
 
-          <aside class="callout caution"><h3>Stop before installing</h3><p>These numbers are a dated snapshot, not a guarantee for other builds. The latest confirmed Quest Pro build shown here is <code>51503870024400340</code>. Meta has since pushed out a Quest Pro firmware update, so an updated headset may no longer match it. Open the live Singularity README and release notes. For this beginner path, continue only when your exact model and complete build number are confirmed there or by the maintainer. <strong>Do not assume a newer build works because an older one did.</strong></p></aside>
+          <aside class="callout caution"><h3>Stop before installing</h3><p>These numbers are a dated snapshot, not a guarantee for other builds. The latest confirmed vulnerable Quest Pro build shown here is <code>51503870024400340</code>. Meta has patched the exploit in newer Quest Pro firmware, so Singularity generally will not work after updating beyond the confirmed build. Open the live Singularity README and release notes, and continue only when your exact model and complete build number are confirmed there or by the maintainer. <strong>Do not assume a newer build works because an older one did.</strong></p></aside>
           <p class="footnote">Quest 1 and other variants have separate or less documented setup; do not use the shared Root Now steps for them without current model-specific instructions.</p>
         </section>
 
