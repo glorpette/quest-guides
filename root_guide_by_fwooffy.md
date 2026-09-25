@@ -1,8 +1,8 @@
 # Root Your Meta Quest with Singularity
 
-> **First-time Windows guide** for **Quest 2 / Quest Pro / Quest 3 / Quest 3S**
+> **First-time Windows/Linux guide** for **Quest 2 / Quest Pro / Quest 3 / Quest 3S**
 
-This guide starts with a normally set up headset and a Windows PC. It explains the Meta developer account, USB driver, ADB, the compatibility check, installation, rooting, and a final root test.
+This guide starts with a normally set up headset and a Windows or Linux PC. It explains the Meta developer account, USB driver, ADB, the compatibility check, installation, rooting, and a final root test.
 
 > [!IMPORTANT]
 > **Guide by Fwooffy.** Project and official documentation were checked on **24 Sep 2026**. Because the project can change quickly, re-check its README and newest release before repeating these steps or updating the headset.
@@ -12,7 +12,8 @@ This guide starts with a normally set up headset and a Windows PC. It explains t
 - [What you need](#what-you-need)
 - [Read this before you start](#read-this-before-you-start)
 - [1. Set up Developer Mode](#1-set-up-developer-mode)
-- [2. Install ADB on Windows](#2-install-adb-on-windows)
+- [2a. Install ADB on Windows](#2a-install-adb-on-windows)
+- [2b. Install ADB on Linux](#2b-install-adb-on-linux)
 - [3. Connect and check your build](#3-connect-and-check-your-build)
 - [4. Install Singularity](#4-install-singularity)
 - [5. Set up Wireless ADB](#5-set-up-wireless-adb)
@@ -27,7 +28,7 @@ This guide starts with a normally set up headset and a Windows PC. It explains t
 ## What you need
 
 - A Quest already paired to the Meta Horizon phone app
-- A Windows 10/11 PC, internet, and a USB-C cable that carries data
+- A Windows 10/11 or Linux PC, internet, and a USB-C cable that carries data
 - Your Meta account and enough time to finish without rushing
 - A backup of photos, recordings, and anything you cannot replace
 - A charged headset; keep it powered during the root process
@@ -76,7 +77,7 @@ Official setup: Meta's **Device Setup** and **Test your app on your device** pag
 
 ---
 
-## 2. Install ADB on Windows
+## 2a. Install ADB on Windows
 
 ADB (Android Debug Bridge) is the small command-line tool that talks to your Quest. You only need Google's Platform Tools package, not Android Studio.
 
@@ -112,6 +113,54 @@ adb version
 
 > [!TIP]
 > **If `adb` is not recognized:** The Command Prompt probably opened in the wrong folder. Reopen the folder that contains `adb.exe`, click its address bar, type `cmd`, and try again.
+
+---
+
+## 2b. Install ADB on Linux
+
+ADB (Android Debug Bridge) is the small command-line tool that talks to your Quest.  
+Meta/Oculus ADB drivers are Windows-only and not required on Linux. Android USB communication is supported natively by the Linux kernel.
+
+### 1. Install ADB via your package manager or manually
+
+Inside your terminal, run your package manager command to install the Android toolkit:
+
+- **Arch / CachyOS:** `sudo pacman -S android-tools`
+- **Debian / Ubuntu:** `sudo apt update && sudo apt install android-tools-adb`
+- **Fedora:** `sudo dnf install android-tools`
+- **openSUSE:** `sudo zypper install android-tools`
+
+> [!TIP]
+> **Manual Option:** If you prefer to install the tools manually, open [Google's SDK Platform Tools](https://developer.android.com/tools/releases/platform-tools) page. Choose the Linux download, accept the license if prompted, and save the ZIP. Extract this ZIP to somewhere accessible via your terminal. If you use this method, open that directory in your terminal and prefix `./` to the start of ADB commands in this guide (for example: `./adb devices`).
+
+### 2. Install system udev rules & permissions
+
+Linux restricts raw USB access by default. Setting up udev rules permits non-root users to communicate with the Quest over USB.
+
+#### Install the udev rules for your distro:
+- **Arch / CachyOS:** `sudo pacman -S android-udev-rules`
+- **Debian / Ubuntu:** `sudo apt install android-sdk-platform-tools-common`
+- **Fedora & openSUSE:** *Skipped — udev rules are included automatically when you install `android-tools` in Step 1.*
+
+#### Apply hardware permissions:
+1. Add your user account to the hardware permission groups:
+   ```shell
+   sudo usermod -aG adbusers,plugdev $USER
+
+2. Reload udev rules to apply changes immediately:
+   ```shell
+   sudo udevadm control --reload-rules && sudo udevadm trigger
+
+3. Log out and back in (or run ``newgrp adbusers`` in your current terminal) for group membership changes to take effect.
+
+### 3. Verify ADB installation
+
+Confirm that ADB is installed and functional with ``adb version``.
+
+Expected output: A response starting with Android Debug Bridge version.
+
+>[!TIP]
+> If adb devices shows no permissions or fails later: Unplug/replug the USB cable and restart the ADB daemon with ``adb kill-server && adb start-server``.
 
 ---
 
@@ -174,9 +223,15 @@ Continue only after the [compatibility check](#3-connect-and-check-your-build). 
 
 Move the APK into your **`platform-tools`** folder. In File Explorer, turn on **View > Show > File name extensions**, then rename it exactly **`Singularity.apk`**. Check that it did not become **`Singularity.apk.apk`**.
 
+Install the APK on your Quest device with:
 ```shell
 adb install -g Singularity.apk
 ```
+
+> [!TIP]
+> **If using Linux:** 
+> - **Package Manager install:** ADB runs system-wide. Open your terminal in the folder containing the APK (e.g., `cd ~/Downloads`) and run `adb install -g Singularity.apk`.
+> - **Manual ZIP download:** Move the APK into your extracted `platform-tools` folder, open your terminal inside that folder, and run `./adb install -g Singularity.apk`.
 
 > **Expected:** `Success`. The `-g` flag grants permissions Singularity needs.
 
@@ -321,3 +376,5 @@ Wireless debugging and pairing code concepts.
 ## Credits and source policy
 
 This beginner-friendly guide was originally created by **Fwooffy**. It was developed from an earlier outline and checked against the project and official documentation linked above. Where that earlier material conflicted with current project or official documentation, this guide follows the linked sources.
+
+Linux instructions added by otter_oasis.
