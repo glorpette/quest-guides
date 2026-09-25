@@ -109,10 +109,10 @@
           </div>
 
           <div class="command-options" aria-label="Linux ADB installation commands">
-            <div><strong>Arch / CachyOS</strong><code>sudo pacman -S android-tools</code></div>
-            <div><strong>Debian / Ubuntu</strong><code>sudo apt update &amp;&amp; sudo apt install android-tools-adb</code></div>
-            <div><strong>Fedora</strong><code>sudo dnf install android-tools</code></div>
-            <div><strong>openSUSE</strong><code>sudo zypper install android-tools</code></div>
+            <div class="command-option"><strong>Arch / CachyOS</strong><div class="command-field"><code>sudo pacman -S android-tools</code><button type="button" data-copy="sudo pacman -S android-tools">Copy</button></div></div>
+            <div class="command-option"><strong>Debian / Ubuntu</strong><div class="command-field"><code>sudo apt update &amp;&amp; sudo apt install android-tools-adb</code><button type="button" data-copy="sudo apt update &amp;&amp; sudo apt install android-tools-adb">Copy</button></div></div>
+            <div class="command-option"><strong>Fedora</strong><div class="command-field"><code>sudo dnf install android-tools</code><button type="button" data-copy="sudo dnf install android-tools">Copy</button></div></div>
+            <div class="command-option"><strong>openSUSE</strong><div class="command-field"><code>sudo zypper install android-tools</code><button type="button" data-copy="sudo zypper install android-tools">Copy</button></div></div>
           </div>
 
           <aside class="callout info"><h3>Manual option</h3><p>Download the Linux ZIP from <a href="https://developer.android.com/tools/releases/platform-tools">Google's SDK Platform Tools page</a>, accept the license, and extract it somewhere accessible from your terminal. Open that directory and prefix commands in this guide with <code>./</code>, for example <code>./adb devices</code>.</p></aside>
@@ -122,9 +122,9 @@
           </div>
 
           <div class="command-options" aria-label="Linux udev installation commands">
-            <div><strong>Arch / CachyOS</strong><code>sudo pacman -S android-udev-rules</code></div>
-            <div><strong>Debian / Ubuntu</strong><code>sudo apt install android-sdk-platform-tools-common</code></div>
-            <div><strong>Fedora / openSUSE</strong><span>Skip this command; the rules are included with <code>android-tools</code>.</span></div>
+            <div class="command-option"><strong>Arch / CachyOS</strong><div class="command-field"><code>sudo pacman -S android-udev-rules</code><button type="button" data-copy="sudo pacman -S android-udev-rules">Copy</button></div></div>
+            <div class="command-option"><strong>Debian / Ubuntu</strong><div class="command-field"><code>sudo apt install android-sdk-platform-tools-common</code><button type="button" data-copy="sudo apt install android-sdk-platform-tools-common">Copy</button></div></div>
+            <div class="command-option command-note"><strong>Fedora / openSUSE</strong><span>Skip this command; the rules are included with <code>android-tools</code>.</span></div>
           </div>
 
           <p>Add your account to the hardware permission groups:</p>
