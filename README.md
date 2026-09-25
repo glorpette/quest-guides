@@ -12,4 +12,5 @@ Rooting is experimental and may cause instability, data loss, or loss of device 
 
 ## Credits
 
-Guides and original research are credited to their respective creators. The Singularity rooting guide was created by **Fwooffy**.
+Guides and original research are credited to their respective creators.  
+The Singularity rooting guide was created by [**Fwooffy**](http://github.com/Fwooffy).
