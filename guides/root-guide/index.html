@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A beginner-friendly Windows guide to rooting supported Meta Quest headsets with Singularity.">
+  <meta name="description" content="A beginner-friendly Windows and Linux guide to rooting supported Meta Quest headsets with Singularity.">
   <meta name="theme-color" content="#112540">
   <title>Root Your Meta Quest with Singularity</title>
   <link rel="canonical" href="https://guides.mxr.lol/guides/root-guide/">
@@ -20,10 +20,10 @@
 
   <main id="guide-content">
     <header class="guide-hero">
-      <p class="eyebrow">First-time Windows guide</p>
+      <p class="eyebrow">First-time Windows / Linux guide</p>
       <h1>Root your Meta Quest<br><span>with Singularity</span></h1>
       <p class="device-list">Quest 2 <i>/</i> Quest Pro <i>/</i> Quest 3 <i>/</i> Quest 3S</p>
-      <p class="guide-intro">Developer Mode, ADB, compatibility checks, installation, rooting, and a final root test—explained from a normally set up headset and a Windows PC.</p>
+      <p class="guide-intro">Developer Mode, ADB, compatibility checks, installation, rooting, and a final root test—explained from a normally set up headset and a Windows or Linux PC.</p>
       <div class="guide-meta"><span>Guide by <strong>Fwooffy</strong></span><span>Checked 24 Sep 2026</span></div>
     </header>
 
@@ -33,7 +33,8 @@
         <nav>
           <a href="#before-you-start">Before you start</a>
           <a href="#developer-mode">1. Developer Mode</a>
-          <a href="#install-adb">2. Install ADB</a>
+          <a href="#install-adb-windows">2a. ADB on Windows</a>
+          <a href="#install-adb-linux">2b. ADB on Linux</a>
           <a href="#check-build">3. Check your build</a>
           <a href="#install-singularity">4. Install Singularity</a>
           <a href="#wireless-adb">5. Wireless ADB</a>
@@ -48,7 +49,7 @@
           <h2>What you need</h2>
           <ul class="check-list">
             <li>A Quest already paired to the Meta Horizon phone app</li>
-            <li>A Windows 10/11 PC, internet, and a USB-C data cable</li>
+            <li>A Windows 10/11 or Linux PC, internet, and a USB-C data cable</li>
             <li>Your Meta account and time to finish without rushing</li>
             <li>A backup of anything you cannot replace</li>
             <li>A charged headset</li>
@@ -76,8 +77,8 @@
           <p class="footnote">Official setup: Meta's Device Setup and Test your app on your device resources are linked in <a href="#references">Useful links and notes</a>.</p>
         </section>
 
-        <section id="install-adb" class="guide-section">
-          <p class="section-kicker">2 / PC setup</p>
+        <section id="install-adb-windows" class="guide-section">
+          <p class="section-kicker">2a / Windows PC setup</p>
           <h2>Install ADB on Windows</h2>
           <p class="section-intro">ADB (Android Debug Bridge) is the small command-line tool that talks to your Quest. You only need Google's Platform Tools package, not Android Studio.</p>
 
@@ -98,6 +99,50 @@
           <aside class="callout info"><h3>If “adb” is not recognized</h3><p>The Command Prompt probably opened in the wrong folder. Reopen the folder that contains <code>adb.exe</code>, click its address bar, type <code>cmd</code>, and try again.</p></aside>
         </section>
 
+        <section id="install-adb-linux" class="guide-section">
+          <p class="section-kicker">2b / Linux PC setup</p>
+          <h2>Install ADB on Linux</h2>
+          <p class="section-intro">ADB (Android Debug Bridge) is the small command-line tool that talks to your Quest. Meta's Oculus ADB driver is Windows-only and is not required on Linux; Android USB communication is supported by the Linux kernel.</p>
+
+          <div class="steps">
+            <div class="step"><span class="step-number">1</span><div><h3>Install ADB</h3><p>Use the command for your distribution, or download Google's Platform Tools manually.</p></div></div>
+          </div>
+
+          <div class="command-options" aria-label="Linux ADB installation commands">
+            <div><strong>Arch / CachyOS</strong><code>sudo pacman -S android-tools</code></div>
+            <div><strong>Debian / Ubuntu</strong><code>sudo apt update &amp;&amp; sudo apt install android-tools-adb</code></div>
+            <div><strong>Fedora</strong><code>sudo dnf install android-tools</code></div>
+            <div><strong>openSUSE</strong><code>sudo zypper install android-tools</code></div>
+          </div>
+
+          <aside class="callout info"><h3>Manual option</h3><p>Download the Linux ZIP from <a href="https://developer.android.com/tools/releases/platform-tools">Google's SDK Platform Tools page</a>, accept the license, and extract it somewhere accessible from your terminal. Open that directory and prefix commands in this guide with <code>./</code>, for example <code>./adb devices</code>.</p></aside>
+
+          <div class="steps compact-top">
+            <div class="step"><span class="step-number">2</span><div><h3>Install udev rules and permissions</h3><p>Linux restricts raw USB access by default. The appropriate udev package lets your non-root user communicate with the Quest over USB.</p></div></div>
+          </div>
+
+          <div class="command-options" aria-label="Linux udev installation commands">
+            <div><strong>Arch / CachyOS</strong><code>sudo pacman -S android-udev-rules</code></div>
+            <div><strong>Debian / Ubuntu</strong><code>sudo apt install android-sdk-platform-tools-common</code></div>
+            <div><strong>Fedora / openSUSE</strong><span>Skip this command; the rules are included with <code>android-tools</code>.</span></div>
+          </div>
+
+          <p>Add your account to the hardware permission groups:</p>
+          <div class="code-block"><div class="code-head"><span>Terminal</span><button type="button" data-copy="sudo usermod -aG adbusers,plugdev $USER">Copy</button></div><pre><code>sudo usermod -aG adbusers,plugdev $USER</code></pre></div>
+
+          <p>Reload the udev rules:</p>
+          <div class="code-block"><div class="code-head"><span>Terminal</span><button type="button" data-copy="sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger">Copy</button></div><pre><code>sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger</code></pre></div>
+
+          <p>Log out and back in for the group changes to take effect. Alternatively, run <code>newgrp adbusers</code> in the current terminal.</p>
+
+          <div class="steps compact-top">
+            <div class="step"><span class="step-number">3</span><div><h3>Verify ADB</h3><p>Confirm that ADB is installed and responding.</p></div></div>
+          </div>
+
+          <div class="code-block"><div class="code-head"><span>Terminal</span><button type="button" data-copy="adb version">Copy</button></div><pre><code>adb version</code></pre><p>Expected: a response beginning <code>Android Debug Bridge version</code>.</p></div>
+          <aside class="callout info"><h3>If ADB reports no permissions</h3><p>Unplug and reconnect the USB cable, then restart the ADB daemon with <code>adb kill-server &amp;&amp; adb start-server</code>.</p></aside>
+        </section>
+
         <section id="check-build" class="guide-section">
           <p class="section-kicker">3 / Mandatory compatibility check</p>
           <h2>Connect and check your build</h2>
@@ -106,14 +151,14 @@
             <div class="step"><span class="step-number">1</span><div><h3>Connect the Quest</h3><p>Use a USB-C <strong>data</strong> cable from the headset to the PC. Put on the headset. At <strong>Allow USB debugging?</strong>, choose <strong>Always allow from this computer</strong>, then <strong>Allow</strong>.</p></div></div>
           </div>
 
-          <div class="code-block"><div class="code-head"><span>Command Prompt</span><button type="button" data-copy="adb devices">Copy</button></div><pre><code>adb devices</code></pre><p>Expected: one serial number with the word <code>device</code>.</p></div>
+          <div class="code-block"><div class="code-head"><span>Command Prompt / Terminal</span><button type="button" data-copy="adb devices">Copy</button></div><pre><code>adb devices</code></pre><p>Expected: one serial number with the word <code>device</code>.</p></div>
           <p>Example: <code>1WMHH123456789 device</code>. If it says <code>unauthorized</code>, approve the prompt inside the headset. If the list is empty, use the <a href="#quick-fixes">quick fixes</a>.</p>
 
           <div class="steps compact-top">
             <div class="step"><span class="step-number">2</span><div><h3>Read the exact firmware build</h3><p>Keep the headset connected. Run the command below and write down the number it prints. This is the <strong>incremental build</strong> used by the project to report confirmed firmware.</p></div></div>
           </div>
 
-          <div class="code-block"><div class="code-head"><span>Command Prompt</span><button type="button" data-copy="adb shell getprop ro.build.version.incremental">Copy</button></div><pre><code>adb shell getprop ro.build.version.incremental</code></pre></div>
+          <div class="code-block"><div class="code-head"><span>Command Prompt / Terminal</span><button type="button" data-copy="adb shell getprop ro.build.version.incremental">Copy</button></div><pre><code>adb shell getprop ro.build.version.incremental</code></pre></div>
 
           <h3 class="subsection-title">Project's confirmed latest builds on 24 Sep 2026</h3>
           <div class="table-wrap"><table><thead><tr><th>Headset</th><th>Project name</th><th>Incremental build</th></tr></thead><tbody><tr><td>Quest Pro</td><td>Seacliff</td><td><code>51503870024400340</code></td></tr><tr><td>Quest 3</td><td>Eureka</td><td><code>52433670036000520</code></td></tr><tr><td>Quest 3S</td><td>Panther</td><td><code>3814840024700610</code></td></tr><tr><td>Quest 2</td><td>Hollywood</td><td><code>52242990024200150</code></td></tr></tbody></table></div>
@@ -125,14 +170,15 @@
         <section id="install-singularity" class="guide-section">
           <p class="section-kicker">4 / App install</p>
           <h2>Install Singularity</h2>
-          <p class="section-intro">Continue only after the compatibility check. Leave the ADB Command Prompt open and the headset connected unless Singularity tells you otherwise.</p>
+          <p class="section-intro">Continue only after the compatibility check. Leave the ADB Command Prompt or terminal open and the headset connected unless Singularity tells you otherwise.</p>
 
           <div class="steps">
             <div class="step"><span class="step-number">1</span><div><h3>Download the APK from GitHub Releases</h3><p><a href="https://github.com/Lumince/singularity/releases">Open the Singularity releases list.</a> Choose the newest visible release, expand <strong>Assets</strong>, and download its Singularity <code>.apk</code> file. The auto-generated <strong>Source code</strong> ZIP is not the installer.</p></div></div>
-            <div class="step"><span class="step-number">2</span><div><h3>Put the APK beside adb.exe</h3><p>Move the APK into your <code>platform-tools</code> folder. In File Explorer, turn on <strong>View &gt; Show &gt; File name extensions</strong>, then rename it exactly <code>Singularity.apk</code>. Check that it did not become <code>Singularity.apk.apk</code>.</p></div></div>
+            <div class="step"><span class="step-number">2</span><div><h3>Prepare the APK for installation</h3><p>On Windows, move the APK into your <code>platform-tools</code> folder. In File Explorer, turn on <strong>View &gt; Show &gt; File name extensions</strong>, then rename it exactly <code>Singularity.apk</code>. Check that it did not become <code>Singularity.apk.apk</code>. On Linux with a package-manager installation, open a terminal in the folder containing the APK.</p></div></div>
           </div>
 
-          <div class="code-block"><div class="code-head"><span>Command Prompt</span><button type="button" data-copy="adb install -g Singularity.apk">Copy</button></div><pre><code>adb install -g Singularity.apk</code></pre><p>Expected: <code>Success</code>. The <code>-g</code> flag grants permissions Singularity needs.</p></div>
+          <div class="code-block"><div class="code-head"><span>Command Prompt / Terminal</span><button type="button" data-copy="adb install -g Singularity.apk">Copy</button></div><pre><code>adb install -g Singularity.apk</code></pre><p>Expected: <code>Success</code>. The <code>-g</code> flag grants permissions Singularity needs.</p></div>
+          <aside class="callout info"><h3>Installing from Linux</h3><p>If ADB came from your package manager, open a terminal in the APK folder and use the command above. If you downloaded Platform Tools manually, move the APK into that extracted folder and run <code>./adb install -g Singularity.apk</code>.</p></aside>
 
           <div class="steps compact-top">
             <div class="step"><span class="step-number">3</span><div><h3>Open it in the headset</h3><p>Open <strong>Library &gt; Unknown Sources &gt; Singularity</strong>. If <strong>Root on Boot</strong> is offered, leave it off for the first root. Keep the headset on Wi-Fi.</p></div></div>
@@ -149,7 +195,7 @@
         <section id="wireless-adb" class="guide-section">
           <p class="section-kicker">5 / Required before root</p>
           <h2>Set up Wireless ADB</h2>
-          <p class="section-intro">A working USB connection in the Windows <code>adb devices</code> list does not by itself finish the app's Wireless ADB setup.</p>
+          <p class="section-intro">A working USB connection in the <code>adb devices</code> list does not by itself finish the app's Wireless ADB setup.</p>
 
           <div class="steps">
             <div class="step"><span class="step-number">6</span><div><h3>Complete permission or pairing prompts</h3><p>If a Wireless debugging screen opens, turn it on and approve the current Wi-Fi network if asked. If Singularity asks for a pairing code, choose <strong>Pair device with pairing code</strong> in the system screen and enter its current six-digit code into Singularity. A code can expire; generate a fresh one if pairing fails.</p></div></div>
@@ -174,17 +220,17 @@
             <div class="step"><span class="step-number">2</span><div><h3>Confirm ADB still sees the headset</h3><p>Reconnect the USB cable if needed. Put on the headset and approve any new USB debugging prompt. The command should show one serial number ending in <code>device</code>.</p></div></div>
           </div>
 
-          <div class="code-block"><div class="code-head"><span>Command Prompt</span><button type="button" data-copy="adb devices">Copy</button></div><pre><code>adb devices</code></pre></div>
+          <div class="code-block"><div class="code-head"><span>Command Prompt / Terminal</span><button type="button" data-copy="adb devices">Copy</button></div><pre><code>adb devices</code></pre></div>
 
           <div class="steps compact-top">
             <div class="step"><span class="step-number">3</span><div><h3>Test the root shell</h3><p>Run the command below. If Singularity-Magisk asks whether <strong>Shell</strong> or <strong>ADB</strong> may use root, tap <strong>Grant</strong>, then run it again.</p></div></div>
           </div>
 
-          <div class="code-block"><div class="code-head"><span>Command Prompt</span><button type="button" data-copy="adb shell su -c id">Copy</button></div><pre><code>adb shell su -c id</code></pre><p>Success contains <code>uid=0(root)</code>. Anything else is not a confirmed root test.</p></div>
+          <div class="code-block"><div class="code-head"><span>Command Prompt / Terminal</span><button type="button" data-copy="adb shell su -c id">Copy</button></div><pre><code>adb shell su -c id</code></pre><p>Success contains <code>uid=0(root)</code>. Anything else is not a confirmed root test.</p></div>
 
           <h3 id="quick-fixes" class="subsection-title">Quick fixes</h3>
           <dl class="quick-fixes">
-            <div><dt>No device listed</dt><dd>Try another data cable or USB port; check Developer Mode and the Meta driver; run <code>adb kill-server</code>, then <code>adb devices</code>.</dd></div>
+            <div><dt>No device listed</dt><dd>Try another data cable or USB port; check Developer Mode and, on Windows, the Meta driver; run <code>adb kill-server</code>, then <code>adb devices</code>.</dd></div>
             <div><dt><code>unauthorized</code></dt><dd>Put on the headset and approve <strong>Allow USB debugging</strong>. Reconnect the cable if the prompt is hidden.</dd></div>
             <div><dt>More than one device</dt><dd>Disconnect extra phones/headsets or wireless ADB sessions, then run <code>adb devices</code> again.</dd></div>
             <div><dt>No Magisk app / no <code>uid=0</code></dt><dd>Do not assume success. Check the app's status and the latest project release notes; avoid repeating <strong>Root Now</strong> after a reported success.</dd></div>
@@ -202,9 +248,9 @@
           <div class="reference-group"><h3>Official Meta setup</h3><a href="https://developers.meta.com/horizon/sign-up/"><strong>Meta developer sign-up</strong><span>Start the developer account</span></a><a href="https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup/"><strong>Meta Device Setup</strong><span>Developer team, verification, Developer Mode, and Windows driver</span></a><a href="https://developers.meta.com/horizon/documentation/android-apps/enable-developer-mode/"><strong>Meta developer mode walkthrough</strong><span>Phone-app path, MTP notification, USB debugging, and Unknown Sources</span></a><a href="https://developers.meta.com/horizon/downloads/package/oculus-adb-drivers/"><strong>Download Meta Oculus ADB Drivers</strong><span>Official Windows driver package</span></a></div>
           <div class="reference-group"><h3>Official Android tools</h3><a href="https://developer.android.com/tools/releases/platform-tools"><strong>Download Google SDK Platform Tools</strong><span>Official Platform Tools download</span></a><a href="https://developer.android.com/studio/run/device"><strong>Android device connection help</strong><span>ADB devices and USB debugging troubleshooting</span></a><a href="https://developer.android.com/tools/adb"><strong>Android wireless debugging</strong><span>Wireless debugging and pairing code concepts</span></a></div>
 
-          <aside class="callout info"><h3>Scope of this guide</h3><p>This is a Windows first-install walkthrough for Quest 2, Quest Pro, Quest 3, and Quest 3S. The project release notes mention Quest 1 and Quest 3S Xbox Edition, but their applicability and setup should be checked separately with the current maintainer instructions. Nothing here proves a particular headset will root successfully.</p></aside>
+          <aside class="callout info"><h3>Scope of this guide</h3><p>This is a Windows or Linux first-install walkthrough for Quest 2, Quest Pro, Quest 3, and Quest 3S. The project release notes mention Quest 1 and Quest 3S Xbox Edition, but their applicability and setup should be checked separately with the current maintainer instructions. Nothing here proves a particular headset will root successfully.</p></aside>
 
-          <div class="credits"><p><strong>Guide by Fwooffy.</strong> Developed from an earlier outline and checked against the project and official documentation linked above. Where earlier material conflicted with current project or official documentation, this guide follows the linked sources.</p><a href="https://discord.com/invite/hantnor">Contact Fwooffy on Discord</a></div>
+          <div class="credits"><p><strong>Guide by Fwooffy.</strong> Developed from an earlier outline and checked against the project and official documentation linked above. Where earlier material conflicted with current project or official documentation, this guide follows the linked sources.</p><p>Linux instructions added by <strong>otter_oasis</strong>.</p><a href="https://discord.com/invite/hantnor">Contact Fwooffy on Discord</a></div>
         </section>
       </article>
     </div>

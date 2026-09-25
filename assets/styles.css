@@ -210,6 +210,11 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .code-block pre { overflow-x: auto; margin: 0; padding: 22px 26px 10px; }
 .code-block pre code { padding: 0; color: var(--ink); background: transparent; font-size: .98rem; font-weight: 700; }
 .code-block > p { margin: 0; padding: 0 26px 18px; color: var(--muted); font-size: .87rem; }
+.command-options { display: grid; gap: 1px; overflow: hidden; margin: 24px 0 30px; border: 1px solid var(--line); border-radius: 7px; background: var(--line); }
+.command-options > div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 18px; align-items: center; padding: 14px 16px; background: var(--surface-soft); }
+.command-options strong { color: var(--blue-dark); font-size: .9rem; }
+.command-options code { overflow-x: auto; padding: .35rem .5rem; white-space: nowrap; }
+.command-options span { color: var(--muted); font-size: .92rem; }
 .table-wrap { overflow-x: auto; margin: 22px 0 30px; border: 1px solid var(--line); border-radius: 7px; }
 table { width: 100%; border-collapse: collapse; font-size: .92rem; }
 th, td { padding: 14px 16px; text-align: left; white-space: nowrap; }
@@ -248,6 +253,7 @@ td code { white-space: nowrap; }
   .guide-nav { position: static; padding: 18px; border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 7px; background: var(--surface-soft); }
   .guide-nav nav { grid-template-columns: 1fr 1fr; gap: 2px 18px; }
   .quick-fixes div { grid-template-columns: 1fr; gap: 4px; }
+  .command-options > div { grid-template-columns: 1fr; gap: 7px; }
 }
 
 @media (max-width: 470px) {
