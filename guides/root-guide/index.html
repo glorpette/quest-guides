@@ -8,7 +8,7 @@
   <title>Root Your Meta Quest with Singularity</title>
   <link rel="canonical" href="https://guides.mxr.lol/guides/root-guide/">
   <link rel="icon" type="image/svg+xml" href="../../assets/meta-logo.svg">
-  <link rel="stylesheet" href="../../assets/styles.css">
+  <link rel="stylesheet" href="../../assets/styles.css?v=20260925b">
 </head>
 <body class="guide-page">
   <div class="reading-progress" aria-hidden="true"><span></span></div>
@@ -31,6 +31,7 @@
       <aside class="guide-nav" aria-label="Guide contents">
         <p class="nav-label">On this page</p>
         <nav>
+          <a href="#quest-pro-firmware-update">Quest Pro update</a>
           <a href="#before-you-start">Before you start</a>
           <a href="#developer-mode">1. Developer Mode</a>
           <a href="#install-adb-windows">2a. ADB on Windows</a>
@@ -44,6 +45,18 @@
       </aside>
 
       <article class="guide-article">
+        <aside id="quest-pro-firmware-update" class="firmware-notice" aria-labelledby="quest-pro-firmware-title">
+          <p class="firmware-notice-label">Compatibility alert · Added 25 Sep 2026</p>
+          <h2 id="quest-pro-firmware-title">Quest Pro firmware update rolling out</h2>
+          <p>Meta has pushed out a Quest Pro firmware update. The latest confirmed Quest Pro build in this guide's dated snapshot is <code>51503870024400340</code>. An updated headset may report a newer incremental build, and any different build must be treated as <strong>unconfirmed until the Singularity project or its maintainer explicitly says otherwise</strong>.</p>
+          <ul>
+            <li>Run <code>adb shell getprop ro.build.version.incremental</code> and record the complete number from your own headset.</li>
+            <li>Do not use a close, older, or previously supported number as evidence that the new firmware is compatible.</li>
+            <li>Do not install Singularity or select <strong>Root Now</strong> unless your exact Quest Pro build is confirmed by the current project README, release notes, or maintainer guidance.</li>
+          </ul>
+          <p class="firmware-notice-foot"><strong>Build-number notice:</strong> <code>51503870024400340</code> is the latest confirmed Quest Pro build in the compatibility snapshot checked on 24 Sep 2026. It is retained for historical reference and must not be treated as confirmation for a headset reporting any other build after Meta's update.</p>
+        </aside>
+
         <section id="before-you-start" class="guide-section">
           <p class="section-kicker">Preparation</p>
           <h2>What you need</h2>
@@ -64,6 +77,8 @@
           <p class="section-kicker">1 / Meta account + headset</p>
           <h2>Set up Developer Mode</h2>
           <p class="section-intro">Developer Mode lets your PC install apps outside the Meta Horizon Store. Use the same Meta account on the headset, phone app, and developer dashboard.</p>
+
+          <aside class="callout caution compact-callout"><h3>Quest Pro: pause before continuing</h3><p>Using the current Developer Mode setup method will force the headset to update before rooting. If you are trying to preserve the confirmed Quest Pro build <code>51503870024400340</code>, <strong>do not continue with these steps yet</strong>. An alternative method that avoids the pre-root update is being investigated; wait for revised guidance before proceeding.</p></aside>
 
           <div class="steps">
             <div class="step"><span class="step-number">1</span><div><h3>Finish normal headset setup</h3><p>If the headset is new or reset, complete its normal on-screen setup. Install the Meta Horizon app on your phone, sign in, and pair the headset there.</p></div></div>
@@ -160,10 +175,10 @@
 
           <div class="code-block"><div class="code-head"><span>Command Prompt / Terminal</span><button type="button" data-copy="adb shell getprop ro.build.version.incremental">Copy</button></div><pre><code>adb shell getprop ro.build.version.incremental</code></pre></div>
 
-          <h3 class="subsection-title">Project's confirmed latest builds on 24 Sep 2026</h3>
+          <h3 class="subsection-title">Dated build snapshot checked on 24 Sep 2026</h3>
           <div class="table-wrap"><table><thead><tr><th>Headset</th><th>Project name</th><th>Incremental build</th></tr></thead><tbody><tr><td>Quest Pro</td><td>Seacliff</td><td><code>51503870024400340</code></td></tr><tr><td>Quest 3</td><td>Eureka</td><td><code>52433670036000520</code></td></tr><tr><td>Quest 3S</td><td>Panther</td><td><code>3814840024700610</code></td></tr><tr><td>Quest 2</td><td>Hollywood</td><td><code>52242990024200150</code></td></tr></tbody></table></div>
 
-          <aside class="callout caution"><h3>Stop before installing</h3><p>These numbers are a dated snapshot, not a guarantee for other builds. Open the live Singularity README and release notes. For this beginner path, continue only when your exact model and build are confirmed there or by the maintainer. <strong>Do not assume a newer build works because an older one did.</strong></p></aside>
+          <aside class="callout caution"><h3>Stop before installing</h3><p>These numbers are a dated snapshot, not a guarantee for other builds. The latest confirmed Quest Pro build shown here is <code>51503870024400340</code>. Meta has since pushed out a Quest Pro firmware update, so an updated headset may no longer match it. Open the live Singularity README and release notes. For this beginner path, continue only when your exact model and complete build number are confirmed there or by the maintainer. <strong>Do not assume a newer build works because an older one did.</strong></p></aside>
           <p class="footnote">Quest 1 and other variants have separate or less documented setup; do not use the shared Root Now steps for them without current model-specific instructions.</p>
         </section>
 
@@ -256,6 +271,6 @@
     </div>
   </main>
   <footer class="site-footer"><span>Quest Root Guides</span><a href="../../">Back to all guides</a></footer>
-  <script src="../../assets/site.js"></script>
+  <script src="../../assets/site.js?v=20260925b"></script>
 </body>
 </html>

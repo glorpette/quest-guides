@@ -1,6 +1,6 @@
 (() => {
   const progress = document.querySelector('.reading-progress span');
-  const sections = [...document.querySelectorAll('.guide-section[id]')];
+  const sections = [...document.querySelectorAll('.firmware-notice[id], .guide-section[id]')];
   const navLinks = [...document.querySelectorAll('.guide-nav a')];
 
   const updateProgress = () => {

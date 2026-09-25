@@ -178,6 +178,12 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .guide-nav a:hover { color: var(--blue); }
 .guide-article { min-width: 0; }
 .guide-article p, .guide-article dd, .guide-article li { overflow-wrap: anywhere; }
+.firmware-notice { scroll-margin-top: 24px; margin: 0 0 70px; padding: 28px 30px; border: 1px solid rgba(212,94,33,.38); border-left: 4px solid #d45e21; border-radius: 0 7px 7px 0; background: var(--warm); }
+.firmware-notice-label { margin: 0 0 8px !important; color: var(--warm-ink); font-size: .76rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+.firmware-notice h2 { margin: 0 0 14px; color: var(--ink); font-size: clamp(1.45rem, 3vw, 2rem); }
+.firmware-notice ul { display: grid; gap: 8px; margin: 18px 0; padding-left: 22px; }
+.firmware-notice li::marker { color: #d45e21; }
+.firmware-notice-foot { margin: 0 !important; padding-top: 16px; border-top: 1px solid rgba(212,94,33,.28); }
 .guide-section { scroll-margin-top: 24px; padding: 0 0 76px; }
 .guide-section + .guide-section { padding-top: 70px; border-top: 1px solid var(--line); }
 .section-kicker { margin: 0 0 8px; color: var(--blue); font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
@@ -196,6 +202,9 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .callout.caution h3 { color: var(--warm-ink); }
 .callout.info { color: var(--ink); background: var(--blue-soft); }
 .callout.info h3 { color: var(--blue-dark); }
+.compact-callout { margin: 0 0 30px; padding: 18px 20px; border-left: 3px solid #d45e21; border-radius: 0 6px 6px 0; }
+.compact-callout h3 { margin-bottom: 6px; }
+.compact-callout p { font-size: .94rem; }
 .steps { display: grid; gap: 26px; }
 .steps.compact-top { margin-top: 34px; }
 .step { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; align-items: start; }
@@ -264,6 +273,7 @@ td code { white-space: nowrap; }
   .step { grid-template-columns: 42px minmax(0, 1fr); gap: 13px; }
   .step-number { width: 42px; height: 42px; border-radius: 6px; }
   .callout { padding: 22px; }
+  .firmware-notice { padding: 22px; }
 }
 
 @media (prefers-color-scheme: dark) {

@@ -4,6 +4,9 @@ Community-maintained guides for rooting supported Meta Quest headsets and explor
 
 [**Read the guides online**](https://guides.mxr.lol/) · [**Open the rooting guide**](https://guides.mxr.lol/guides/root-guide/)
 
+> [!WARNING]
+> **Quest Pro firmware update:** Meta has pushed out a Quest Pro firmware update. The latest confirmed Quest Pro build in the rooting guide's dated snapshot is `51503870024400340`, checked on **24 Sep 2026**. An updated headset may report a different build; do not treat the confirmed number as support for any newer build. Check the complete incremental build reported by your own Quest Pro and do not continue unless that exact build is confirmed by the current Singularity documentation, release notes, or maintainer guidance.
+
 ## Available guides
 
 | Guide | Platforms | Supported headsets | Formats |
