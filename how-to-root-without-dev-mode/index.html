@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A community-discovered, in-headset method for installing and setting up Singularity without enabling Meta account-level Developer Mode.">
+  <meta name="theme-color" content="#112540">
+  <title>Root Meta Quest Without Meta Developer Mode</title>
+  <link rel="canonical" href="https://guides.mxr.lol/how-to-root-without-dev-mode/">
+  <link rel="icon" type="image/svg+xml" href="../assets/meta-logo.svg">
+  <link rel="stylesheet" href="../assets/styles.css?v=20260926">
+</head>
+<body class="guide-page">
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <a class="skip-link" href="#guide-content">Skip to guide</a>
+  <header class="site-header">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true"><img src="../assets/meta-logo.svg" alt=""></span><span>Quest Root Guides</span></a>
+    <a class="header-link" href="../guides/root-guide/">Standard setup guide</a>
+  </header>
+
+  <main id="guide-content">
+    <header class="guide-hero">
+      <p class="eyebrow">New community method · In-headset setup</p>
+      <h1>Root your Meta Quest<br><span>without Meta Developer Mode</span></h1>
+      <p class="device-list">No developer organization <i>/</i> No PC-side APK install <i>/</i> Singularity v1.0.6.8</p>
+      <p class="guide-intro">This path installs Singularity from inside the headset, opens Android's hidden settings, and enables local Android debugging without first enabling Meta account-level Developer Mode.</p>
+      <div class="guide-meta"><span>Method shared by <strong>@veusepe</strong></span><span>Rewritten 26 Sep 2026</span></div>
+    </header>
+
+    <div class="guide-shell">
+      <aside class="guide-nav" aria-label="Guide contents">
+        <p class="nav-label">On this page</p>
+        <nav>
+          <a href="#before-you-start">Before you start</a>
+          <a href="#prevent-updates">1. Prevent updates</a>
+          <a href="#install-singularity">2–5. Install in-headset</a>
+          <a href="#enable-debugging">6–8. Enable debugging</a>
+          <a href="#pair-singularity">9–13. Pair Singularity</a>
+          <a href="#root-and-finish">14–16. Root and reopen</a>
+          <a href="#post-root">17. Lock down updates</a>
+          <a href="#references">Links and credit</a>
+        </nav>
+      </aside>
+
+      <article class="guide-article">
+        <section id="before-you-start" class="guide-section">
+          <p class="section-kicker">Important distinction</p>
+          <h2>What this method does</h2>
+          <p class="section-intro">This avoids Meta's account-level Developer Mode flow. It still enables Android <strong>Developer Options</strong>, USB debugging, and Wireless Debugging directly on the headset.</p>
+
+          <aside class="callout caution compact-callout"><h3>New and community-sourced</h3><p>This method was transcribed from community instructions and has not been independently verified across every headset or firmware build. Rooting remains experimental and can cause crashes, data loss, or loss of device functionality.</p></aside>
+
+          <aside class="firmware-notice" aria-labelledby="patched-firmware-title">
+            <p class="firmware-notice-label">Do not update first</p>
+            <h2 id="patched-firmware-title">Newer firmware patches the exploit</h2>
+            <p>Meta has patched the vulnerability used by Singularity in newer firmware. The latest confirmed vulnerable Quest Pro build in this repository's dated snapshot is <code>51503870024400340</code>. If your headset reports a different or newer build, assume the exploit will not work unless the project explicitly confirms otherwise.</p>
+          </aside>
+
+          <ul class="check-list">
+            <li>Start with the headset powered off, if possible</li>
+            <li>Have control of the headset's internet connection</li>
+            <li>Confirm your exact firmware build is supported</li>
+            <li>Back up anything you cannot replace</li>
+            <li>Read all 17 steps before beginning</li>
+          </ul>
+        </section>
+
+        <section id="prevent-updates" class="guide-section">
+          <p class="section-kicker">Before powering on</p>
+          <h2>Keep the headset from updating</h2>
+          <p class="section-intro">The source instructions provide two ways to get the headset online long enough to prepare it without immediately accepting a patched firmware update.</p>
+
+          <div class="steps">
+            <div class="step"><span class="step-number">A</span><div><h3>If you can change your router settings</h3><p>Open the project's <a href="https://github.com/Lumince/singularity/blob/main/hosts">host-blocking list</a> and block the listed telemetry hosts. The source identifies <code>graph.oculus.com</code> as update-related, while noting that updates may also come from other locations. If you do not plan to use the Store, it also suggests blocking the store and entitlement hosts. Disconnect the router from the internet, power on the headset, and turn off every automatic-update option before restoring internet access.</p></div></div>
+            <div class="step"><span class="step-number">B</span><div><h3>If you cannot change your router settings</h3><p>Disconnect or unplug the internet connection before powering on the headset. Turn every automatic-update toggle off before reconnecting the internet and continuing.</p></div></div>
+          </div>
+
+          <div class="steps compact-top">
+            <div class="step"><span class="step-number">1</span><div><h3>Confirm automatic updates are off</h3><p>Open <strong>Settings &gt; Software Update</strong> and verify that all automatic-update options are switched <strong>Off</strong>.</p></div></div>
+          </div>
+        </section>
+
+        <section id="install-singularity" class="guide-section">
+          <p class="section-kicker">Install entirely in-headset</p>
+          <h2>Download and open Singularity</h2>
+
+          <div class="steps">
+            <div class="step"><span class="step-number">2</span><div><h3>Install AnExplorer from the Meta Store</h3><p>On the headset, install <a href="https://www.meta.com/experiences/anexplorer-vr-file-manager/6091443354290737/">AnExplorer VR File Manager</a> from the Meta Store. This supplies the file-install path when Meta Developer Mode is not enabled.</p></div></div>
+            <div class="step"><span class="step-number">3</span><div><h3>Download Singularity in the headset browser</h3><p>Open the headset's internet browser and download the APK from the <a href="https://github.com/Lumince/singularity/releases/tag/v1.0.6.8">Singularity v1.0.6.8 release</a>. The community instructions specifically reference this release.</p></div></div>
+            <div class="step"><span class="step-number">4</span><div><h3>Install the APK with AnExplorer</h3><p>Open AnExplorer, select the downloaded APK, and choose <strong>Install</strong>. If another window opens, select the APK again. When Android asks whether AnExplorer may install files, enable the permission, return, and select <strong>Install</strong> again.</p></div></div>
+            <div class="step"><span class="step-number">5</span><div><h3>Open Android Settings</h3><p>Choose <strong>Open Android Settings</strong>, then select the large green <strong>Open</strong> button beneath the icon.</p></div></div>
+          </div>
+        </section>
+
+        <section id="enable-debugging" class="guide-section">
+          <p class="section-kicker">Hidden Android settings</p>
+          <h2>Enable local debugging</h2>
+
+          <div class="steps">
+            <div class="step"><span class="step-number">6</span><div><h3>Unlock Android Developer Options</h3><p>Scroll to <strong>About headset</strong>, scroll to the bottom, and tap <strong>Build number</strong> repeatedly. A small toast message should confirm that you are now a developer.</p></div></div>
+            <div class="step"><span class="step-number">7</span><div><h3>Turn on USB and Wireless Debugging</h3><p>Go back, open <strong>System &gt; Developer Options</strong>, then enable <strong>USB debugging</strong> and <strong>Wireless Debugging</strong>. Wireless Debugging is slightly indented in the list.</p></div></div>
+            <div class="step"><span class="step-number">8</span><div><h3>Generate a pairing code</h3><p>Select the <strong>Wireless Debugging</strong> heading itself, then choose <strong>Pair device with pairing code</strong>.</p></div></div>
+          </div>
+        </section>
+
+        <section id="pair-singularity" class="guide-section">
+          <p class="section-kicker">Two different ports</p>
+          <h2>Pair and connect Singularity</h2>
+          <aside class="callout info compact-callout"><h3>Do not mix up the ports</h3><p>The temporary pairing dialog and the main Wireless Debugging screen show different <strong>IP address &amp; port</strong> values. Singularity needs both at different stages.</p></aside>
+
+          <div class="steps">
+            <div class="step"><span class="step-number">9</span><div><h3>Enter the six-digit pairing code</h3><p>Enter the code in Singularity's <strong>Pairing code</strong> field. If you skipped the setup screen and cannot see that field, restart Singularity from the app list: open the left menu—the three dots and lines beneath Search—and choose <strong>Untrusted Sources</strong>.</p></div></div>
+            <div class="step"><span class="step-number">10</span><div><h3>Enter the temporary pairing port</h3><p>Beneath the pairing code, find <strong>IP address &amp; port</strong>. It should resemble <code>192.168.0.x:PORT</code>. Copy only the value after the colon (<code>:</code>) into Singularity's <strong>Pairing Port</strong> field.</p></div></div>
+            <div class="step"><span class="step-number">11</span><div><h3>Pair the device</h3><p>Select <strong>Pair Device</strong> in Singularity.</p></div></div>
+            <div class="step"><span class="step-number">12</span><div><h3>Read the second port</h3><p>Return to the main Wireless Debugging screen—the screen where you selected the pairing option. Find its other <strong>IP address &amp; port</strong> value. This one is different. Copy the number after the colon.</p></div></div>
+            <div class="step"><span class="step-number">13</span><div><h3>Complete setup</h3><p>Use that second port value in Singularity, then select <strong>Complete Setup</strong>.</p></div></div>
+          </div>
+        </section>
+
+        <section id="root-and-finish" class="guide-section">
+          <p class="section-kicker">Run the exploit</p>
+          <h2>Root and reopen Singularity</h2>
+
+          <div class="steps">
+            <div class="step"><span class="step-number">14</span><div><h3>Select Root Now</h3><p>Select <strong>Root Now</strong>. The headset may briefly behave erratically while the exploit runs; leave it alone and allow the process to finish.</p></div></div>
+            <div class="step"><span class="step-number">15</span><div><h3>Reopen Singularity</h3><p>From the app list, open the left menu—the three dots and lines beneath Search—then choose <strong>Untrusted Sources</strong> and reopen Singularity.</p></div></div>
+            <div class="step"><span class="step-number">16</span><div><h3>Enable Run on boot</h3><p>Turn on <strong>Run on boot</strong> in Singularity.</p></div></div>
+          </div>
+        </section>
+
+        <section id="post-root" class="guide-section">
+          <p class="section-kicker">Keep the vulnerable firmware</p>
+          <h2>Disable telemetry and updates</h2>
+
+          <div class="steps">
+            <div class="step"><span class="step-number">17</span><div><h3>Configure AIO Tweaks</h3><p>Open <strong>AIO Tweaks &gt; Utils</strong>. Turn on <strong>Disable Meta telemetry</strong> and <strong>Disable the update engine</strong>.</p></div></div>
+          </div>
+
+          <aside class="callout info"><h3>Additional source recommendations</h3><p>The community instructions also suggest disabling <strong>Meta Backdoor</strong> “for good measure.” For stricter blocking, enable <strong>Meta domain blocker with Updates</strong>, open <strong>Set up</strong> for the Domain Blocker, enable <strong>Updates/Firmware</strong> and <strong>Telemetry/Analytics</strong>, and enable the blocker on boot.</p></aside>
+        </section>
+
+        <section id="references" class="guide-section">
+          <p class="section-kicker">Source material</p>
+          <h2>Links and credit</h2>
+          <div class="reference-group">
+            <h3>Downloads and blocking list</h3>
+            <a href="https://github.com/Lumince/singularity/blob/main/hosts"><strong>Singularity host-blocking list</strong><span>Telemetry, account, store, entitlement, media, and service hosts referenced by the source method</span></a>
+            <a href="https://www.meta.com/experiences/anexplorer-vr-file-manager/6091443354290737/"><strong>AnExplorer VR File Manager</strong><span>Meta Store file manager used to open and install the APK in-headset</span></a>
+            <a href="https://github.com/Lumince/singularity/releases/tag/v1.0.6.8"><strong>Singularity v1.0.6.8</strong><span>The specific release linked in the supplied community instructions</span></a>
+          </div>
+          <div class="credits"><p><strong>Community method shared by @veusepe.</strong> The original instructions invite users who need help to DM <strong>@veusepe</strong>. This version was rewritten and structured for the repository from the supplied screenshot. Interface labels are preserved from the source and may vary slightly by headset or app version.</p><p>This method is separate from the standard Developer Mode guide and should be treated as experimental until it has been more broadly verified.</p></div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer"><span>Quest Root Guides</span><a href="../">Back to all guides</a></footer>
+  <script src="../assets/site.js?v=20260926"></script>
+</body>
+</html>
