@@ -133,8 +133,8 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .section-heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); }
 .guide-count { padding: 8px 13px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); background: var(--paper); font-size: .84rem; font-weight: 750; }
 
+.guide-list { display: grid; gap: 24px; }
 .guide-card { padding: clamp(28px, 5vw, 48px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--paper); box-shadow: 0 16px 45px rgba(17,37,64,.07); }
-.guide-card + .guide-card { margin-top: 22px; }
 .guide-card-topline, .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .tag { display: inline-flex; padding: 7px 12px; border-radius: 5px; color: white; background: linear-gradient(110deg, var(--blue-dark), var(--blue), var(--violet)); font-size: .74rem; font-weight: 850; letter-spacing: .055em; text-transform: uppercase; }
 .reading-time { color: var(--muted); font-size: .86rem; font-weight: 700; }
