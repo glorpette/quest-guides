@@ -179,6 +179,17 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .guide-nav a:hover { color: var(--blue); }
 .guide-article { min-width: 0; }
 .guide-article p, .guide-article dd, .guide-article li { overflow-wrap: anywhere; }
+.source-guide ol { display: grid; gap: 12px; margin: 0 0 24px; padding-left: 1.45rem; }
+.source-guide ol li { padding-left: .2rem; }
+.source-guide ol li::marker { color: var(--blue-dark); font-weight: 850; }
+.source-guide h3 { margin: 34px 0 16px; font-size: 1.2rem; }
+.source-quote { margin: 0 0 34px; border-left: 4px solid #d45e21; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.source-quote p + p { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(212,94,33,.25); }
+.guide-meta a { color: white; font-weight: 800; }
+.project-credit { margin-top: 0; }
+.license-notice { margin-top: 24px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface-soft); }
+.license-notice summary { color: var(--blue-dark); font-weight: 850; cursor: pointer; }
+.license-notice p { margin: 16px 0 0; color: var(--muted); font-size: .86rem; }
 .firmware-notice { scroll-margin-top: 24px; margin: 0 0 70px; padding: 28px 30px; border: 1px solid rgba(212,94,33,.38); border-left: 4px solid #d45e21; border-radius: 0 7px 7px 0; background: var(--warm); }
 .firmware-notice-label { margin: 0 0 8px !important; color: var(--warm-ink); font-size: .76rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
 .firmware-notice h2 { margin: 0 0 14px; color: var(--ink); font-size: clamp(1.45rem, 3vw, 2rem); }

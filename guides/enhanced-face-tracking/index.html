@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Set up QproFaceTracking V2.0.2 for enhanced eye, tongue, and pupil tracking on a rooted Meta Quest Pro.">
+  <meta name="theme-color" content="#112540">
+  <title>QproFaceTracking V2.0.2 Setup Guide</title>
+  <link rel="canonical" href="https://guides.mxr.lol/guides/enhanced-face-tracking/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/meta-logo.svg">
+  <link rel="stylesheet" href="../../assets/styles.css?v=20260927">
+</head>
+<body class="guide-page">
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <a class="skip-link" href="#guide-content">Skip to guide</a>
+  <header class="site-header">
+    <a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"><img src="../../assets/meta-logo.svg" alt=""></span><span>Quest Root Guides</span></a>
+    <a class="header-link" href="https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless">Project repository</a>
+  </header>
+
+  <main id="guide-content">
+    <header class="guide-hero">
+      <p class="eyebrow">Quest Pro · Enhanced face tracking</p>
+      <h1>QproFaceTracking V2.0.2:<br><span>text setup guide</span></h1>
+      <p class="device-list">Independent eye gaze <i>/</i> Tongue tracking <i>/</i> Pupil dilation <i>/</i> USB or wireless ADB</p>
+      <p class="guide-intro">Set up the QproFaceTracking Hub and bridge for enhanced face tracking on a rooted Meta Quest Pro.</p>
+      <div class="guide-meta"><span>Guide and project by <strong>Fwooffy</strong></span><span><a href="https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless">Qpro-Enhanced-FT-Wireless</a></span></div>
+    </header>
+
+    <div class="guide-shell">
+      <aside class="guide-nav" aria-label="Guide contents">
+        <p class="nav-label">On this page</p>
+        <nav>
+          <a href="#before-you-start">Before you start</a>
+          <a href="#1-set-up-eye-tracking-and-independent-gaze-first">1. Eye tracking</a>
+          <a href="#download-hub">2. Download the Hub</a>
+          <a href="#pc-apps">3. PC apps</a>
+          <a href="#connect-hub">4. Connect the Quest</a>
+          <a href="#setup-buttons">5. Setup buttons</a>
+          <a href="#tongue-model">6. Tongue model</a>
+          <a href="#start-tracking">7. Start tracking</a>
+          <a href="#common-problems">Common problems</a>
+          <a href="#project-credit">Project and license</a>
+        </nav>
+      </aside>
+
+      <article class="guide-article source-guide">
+        <section id="before-you-start" class="guide-section">
+          <div class="callout caution source-quote">
+            <p><strong>Before you start: you need a rooted Meta Quest Pro and the latest VRCFaceTracking from Steam.</strong> This program will not work on an unrooted headset or a different Quest model. If you still need to root your Quest Pro, use <a href="https://github.com/glorpette/quest-guides/blob/main/root_guide_by_fwooffy.md">Fwooffy and glorpette's beginner root guide</a>. Check that your headset's exact software version is supported by <a href="https://github.com/Lumince/singularity">Singularity</a> before following a root guide. <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">Install or update VRCFaceTracking through Steam</a> before using Qpro's bridge.</p>
+            <p><strong>If you used a QproFaceTracking version before V2.0, record and train your tongue model again.</strong> Do not import a pre-V2.0 model and assume it will work correctly. A working V2.0 or V2.0.1 model can be exported and imported into V2.0.2. The included developer model is only a starting point.</p>
+          </div>
+
+          <p>Start with the headset's eye tracking, then set up the PC software. The <strong>Hub</strong> is the <code>QproFaceTracking.exe</code> program. <strong>ADB</strong> is the connection it uses to talk to your Quest. The <strong>bridge</strong> sends Qpro's tracking results to VRCFaceTracking.</p>
+        </section>
+
+        <section id="1-set-up-eye-tracking-and-independent-gaze-first" class="guide-section">
+          <h2>1. Set up eye tracking and independent gaze first</h2>
+          <ol>
+            <li>On the rooted Quest Pro, open <strong>Settings &gt; Movement Settings</strong>. Turn on <strong>Eye Tracking</strong> and <strong>Natural Facial Expressions</strong>, then run eye calibration if offered. If these are already enabled, leave them on. Keep Developer Mode enabled.</li>
+            <li>If <strong>Magisk OverlayFS</strong> is not installed yet, open <strong>Singularity &gt; Apps/Modules &gt; Magisk repo</strong> and install it. Follow any reboot prompts. If it is already enabled in Magisk, you can skip reinstalling it.</li>
+            <li>In the same Singularity menu, install <strong>Quest Pro Independent Eye Gaze</strong> if it is not installed yet. Reboot if prompted, then check in Magisk that both modules are enabled. This is the headset-side independent gaze route.</li>
+            <li>Once Virtual Desktop and VRCFaceTracking are installed in section 3, check that left and right gaze and convergence move correctly. The Magisk route has been reported working on <strong>Horizon OS v2.7</strong>, but exact firmware builds can behave differently.</li>
+          </ol>
+          <p><strong>Use one independent gaze method at a time.</strong> While the Magisk module is active, leave <strong>Independent Eye Gaze</strong> unchecked in the Hub and skip <strong>Prepare gaze</strong> in section 5. If you want to try the Hub's temporary gaze method instead, disable the Magisk gaze module and reboot first. <strong>Stop tracking</strong> only reverses the Hub's changes; it does not disable a Magisk module.</p>
+        </section>
+
+        <section id="download-hub" class="guide-section">
+          <h2>2. Download and open the Hub</h2>
+          <ol>
+            <li>Download the QproFaceTracking <strong>ZIP file</strong> from <a href="https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless/releases">this project's Releases page</a>. Choose the named QproFaceTracking ZIP, <strong>not</strong> GitHub's “Source code” ZIP.</li>
+            <li>In Windows File Explorer, right-click the ZIP and choose <strong>Extract All</strong>. Open the extracted folder. Keep <code>QproFaceTracking.exe</code>, <code>Helpers</code>, and <code>QproRuntime</code> together.</li>
+            <li>Double-click <code>QproFaceTracking.exe</code>. It opens on <strong>First-time setup</strong> the first time. You can return to that page from the menu on the left.</li>
+          </ol>
+          <p>You need an internet connection and several gigabytes of free space for setup. The ZIP already includes ADB. The Hub installs the Python parts it needs, so you do not have to install ADB or Python separately for this program.</p>
+        </section>
+
+        <section id="pc-apps" class="guide-section">
+          <h2>3. Get the PC apps ready</h2>
+          <p>If Magisk asks whether <strong>Shell / ADB Shell</strong> may have root access, allow it. Keep the Quest awake while setting up the Hub.</p>
+          <p>For VRChat tracking, install <a href="https://www.vrdesktop.net/">Virtual Desktop and its PC Streamer</a>, <a href="https://store.steampowered.com/app/250820/SteamVR/">SteamVR</a>, and the <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">latest VRCFaceTracking from Steam</a>. <strong>The current Steam VRCFaceTracking is required.</strong> Let Steam finish updating it before installing Qpro's bridge. Try ordinary face and blink tracking in VRCFaceTracking first. If that does not work, fix it before turning on Qpro's extra features.</p>
+          <p>If you want to stream the <strong>Virtual Desktop picture over a USB cable</strong>, Fwooffy's working setup used the Virtual Desktop <strong>Beta</strong> channel. In the Meta Horizon phone app or the headset's app library, long-press Virtual Desktop, open <strong>Settings &gt; Release Channels</strong>, choose <strong>Beta</strong>, and update it. This changes VR video streaming. The Hub's USB or wireless choice below controls <strong>tracking data</strong>, which is separate.</p>
+        </section>
+
+        <section id="connect-hub" class="guide-section">
+          <h2>4. Connect your Quest to the Hub</h2>
+          <p>Choose <strong>one</strong> connection type on <strong>First-time setup</strong>. If this is your first time using the Hub, USB is the easiest way to check that it works. You can switch to wireless later.</p>
+
+          <h3>Option A: USB cable</h3>
+          <ol>
+            <li>Plug the Quest Pro into the PC and put the headset on.</li>
+            <li>If a <strong>USB debugging</strong> message appears in the headset, choose <strong>Allow</strong>.</li>
+            <li>In the Hub, set <strong>Connection type</strong> to <strong>USB cable</strong>. If the Hub says it can see the headset but has no root access, open Magisk on the Quest and allow <strong>Shell / ADB Shell</strong>. Then use <strong>Refresh connection status</strong> on the Live tracking page.</li>
+          </ol>
+
+          <h3>Option B: Wireless ADB</h3>
+          <ol>
+            <li>Connect the Quest and PC to the same private Wi-Fi network. On <strong>First-time setup</strong>, choose <strong>Wireless ADB (Wi-Fi)</strong>.</li>
+            <li>Enter the Quest's Wi-Fi address in <strong>Quest IP:port</strong>. It usually looks like <code>192.168.1.25:5555</code>. The numbers before <code>:5555</code> are <em>your Quest's</em> address, so do not copy that example exactly. Press <strong>Connect to Quest</strong>.</li>
+            <li>A <strong>Quest connected</strong> pop-up means wireless ADB and Magisk root are ready. Activity will also say <strong>Wireless Quest ready</strong>. <strong>Do not press Pair and connect.</strong> You can unplug the USB cable, if one was attached. If a <strong>Quest connection failed</strong> pop-up appears, check the Quest's current IP and port, keep it awake, and read <strong>Activity</strong> for the exact error.</li>
+            <li>If the wireless connection is off but USB works, plug in USB once and press <strong>Enable from USB</strong>. After the Hub reports success, unplug USB and connect to the saved Quest address.</li>
+          </ol>
+
+          <p><strong>Pair and connect</strong> is only for a headset that shows a <strong>six-digit wireless debugging pairing code</strong>. Keep the pairing message open in the headset. Put the short-lived address shown next to the code into <strong>Pairing IP:port</strong>, put the code into <strong>Six-digit code</strong>, and keep the normal Quest address in <strong>Quest IP:port</strong>. The two port numbers are different. For example, <code>192.168.1.25:5555</code> is a normal connection address, <strong>not</strong> a pairing address. Use your Quest's actual address.</p>
+          <p>If pairing says <code>protocol fault</code>, open a new pairing message on the headset and use its new code and pairing port. If <strong>Connect to Quest</strong> already said ready, skip pairing. Your Quest's Wi-Fi address may change after a reboot; update it in the Hub if it does. Use wireless ADB only on a trusted network.</p>
+        </section>
+
+        <section id="setup-buttons" class="guide-section">
+          <h2>5. Press the setup buttons</h2>
+          <p>On <strong>First-time setup</strong>, work down the three numbered cards:</p>
+          <ol>
+            <li>On the <strong>PC runtime</strong> card, press <strong>Install runtime</strong> and wait for Activity to say it has finished. This downloads the PC parts needed for tracking. The Hub stays at your current place on the page while it runs. An existing Python 3.12 installation does <strong>not</strong> need to be removed.</li>
+            <li><strong>Close VRCFaceTracking</strong>, press <strong>Install bridge</strong>, wait for it to finish, and then reopen VRCFaceTracking.</li>
+            <li>If you chose the Hub's independent gaze method <strong>instead of the Magisk module</strong>, press <strong>Prepare gaze</strong> while the rooted Quest is connected. The Hub prepares a temporary eye model from your own headset. Skip this button if the Magisk gaze module is enabled, or if you only want tongue or pupil tracking.</li>
+          </ol>
+          <p>The Hub's gaze method can fail on some Quest Pro firmware builds even when ordinary face, tongue, and pupil tracking work. If it fails, use the Singularity module instructions in section 1, or keep ordinary Virtual Desktop eye tracking. Note your Quest's <strong>exact firmware build</strong> when asking for help. Applying or restoring the Hub's temporary eye model restarts Meta trackingservice. The headset may briefly look frozen and lose positional tracking; this is an expected restart, not a headset crash. Wait for Activity to confirm that tracking has returned.</p>
+          <p>To remove Qpro's VRCFaceTracking add-on later, close VRCFaceTracking and press <strong>Uninstall bridge</strong> on the <strong>VRCFT bridge</strong> card. Confirm the prompt, wait for <strong>Setup step complete</strong>, then restart VRCFaceTracking. The Hub removes only Qpro's bridge and restores any Virtual Desktop modules this extracted copy saved during installation. It does not delete your tongue recordings or models. If ordinary Virtual Desktop face tracking is missing afterward, install its official VRCFaceTracking module again.</p>
+          <p><strong>AMD GPU:</strong> After <strong>Install runtime</strong> succeeds, check the <a href="https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.2.1/docs/compatibility/compatibilityrad/windows/windows_compatibility.html">AMD GPU support list linked in the Hub</a>. If your GPU is supported, press <strong>Install AMD ROCm</strong> and wait for its checks to pass. This adds GPU support for tongue tracking and training. <strong>NVIDIA GPU or CPU:</strong> skip the AMD button. When tracking starts, Activity tells you whether the tongue model is using AMD, NVIDIA, or CPU. AMD has been tested on an RX 7900 XTX, and NVIDIA CUDA hardware has also been live-tested and is functional.</p>
+        </section>
+
+        <section id="tongue-model" class="guide-section">
+          <h2>6. Record and train your tongue model</h2>
+          <p><strong>Train if you have no personal model or used a version before V2.0. You can import a working V2.0 or V2.0.1 model into V2.0.2.</strong> The bundled model was trained for someone else's face.</p>
+          <ol>
+            <li>Open <strong>Personalize</strong> in the Hub.</li>
+            <li>Choose <strong>Quick refinement</strong> for the shorter guided session, or <strong>Full dataset</strong> for more thorough coverage. Press <strong>1. Record refinement</strong> or <strong>1. Record full dataset</strong>.</li>
+            <li>Follow each on-screen pose card. Include the side and <strong>diagonal</strong> tongue positions. Missing a pose can make tracking briefly disappear there.</li>
+            <li>When recording finishes, choose the new recording in the list. Press <strong>2. Train personalized copy</strong> or <strong>2. Train new personal model</strong>. Wait for Activity to say training finished.</li>
+          </ol>
+          <p>The <strong>Model manager</strong> can export a model as a backup. Import working V2.0 or V2.0.1 exports into V2.0.2; for pre-V2.0 exports, make a new capture and train again. Camera recordings are personal data, so share them only if you want to.</p>
+          <p>To remove a recording you no longer need, stay on <strong>Personalize</strong>. Under the matching <strong>Quick refinement</strong> or <strong>Full dataset</strong> card, choose it from <strong>Recorded datasets (including trained)</strong> and press <strong>Delete selected dataset…</strong>. Read the confirmation before choosing <strong>Yes</strong>: this permanently removes the recording, its labels and session details, and its prepared training cache from this extracted copy. A tongue model already trained from that recording remains available in <strong>Model manager</strong>. The training dropdown above only lists datasets still waiting to be trained.</p>
+        </section>
+
+        <section id="start-tracking" class="guide-section">
+          <h2>7. Start tracking</h2>
+          <ol>
+            <li>Start Virtual Desktop on the Quest, then SteamVR and VRCFaceTracking on the PC.</li>
+            <li>In the Hub, open <strong>Live tracking</strong>. Select Independent Eye Gaze, tongue tracking, pupil dilation, or the combination you want. <strong>If you installed Singularity's Independent Eye Gaze Magisk module, leave the Hub's Independent Eye Gaze option off.</strong> For tongue tracking, choose the <strong>new model you just trained</strong> under <strong>Tongue model</strong>. If tracking is already running, press <strong>Stop tracking</strong> first so the new model loads when tracking restarts.</li>
+            <li>Press <strong>Start tracking</strong>. Open <strong>Activity</strong> if you want to see whether the camera connected and which device is running the tongue model.</li>
+            <li>When you finish, press <strong>Stop tracking</strong>. Wait until Activity says the camera has stopped and the stock eye model has been restored.</li>
+          </ol>
+          <p><strong>Preview tracking cameras</strong> lets you hide the camera windows without turning tracking off. Change it before starting the next session. <strong>Pupil response</strong> makes avatar pupil changes stronger or weaker; start near the default and adjust slowly. Pupil values are estimates for avatar animation, <strong>not</strong> measured eye health data. Your VRChat avatar must support pupil animation for changes to appear.</p>
+          <p>If Independent Eye Gaze fails to start or stops unexpectedly, the Hub turns it off automatically and remembers that choice. Tongue and pupil tracking continue if selected. Check <strong>Activity</strong> for the recovery result before trying gaze again; select <strong>Independent Eye Gaze</strong> manually to retry.</p>
+        </section>
+
+        <section id="common-problems" class="guide-section">
+          <h2>Common problems</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>What you see</th><th>What to try</th></tr></thead>
+              <tbody>
+                <tr><td>“Root access unavailable”</td><td>Keep the Quest awake. In Magisk, allow <strong>Shell / ADB Shell</strong>, then refresh the connection.</td></tr>
+                <tr><td><strong>Quest connected</strong> pop-up, followed by a pairing error</td><td>You are already connected. Skip <strong>Pair and connect</strong> and start tracking.</td></tr>
+                <tr><td><strong>Quest connection failed</strong> pop-up</td><td>Check the Quest's current Wi-Fi IP and port, wake the headset, and read <strong>Activity</strong> for the specific error.</td></tr>
+                <tr><td><code>protocol fault</code> during pairing</td><td>Use a fresh six-digit code and the <strong>temporary pairing port</strong> shown on the Quest, not the usual <code>:5555</code> port.</td></tr>
+                <tr><td>Wireless stopped working after a reboot</td><td>Check the Quest's current Wi-Fi address. Wireless ADB may need to be enabled again.</td></tr>
+                <tr><td>AMD installer says PC runtime is missing</td><td>Finish <strong>Install runtime</strong> first, then return to <strong>Install AMD ROCm</strong>.</td></tr>
+                <tr><td>Independent gaze or convergence fails but ordinary face tracking works</td><td>Check the Quest's exact firmware build. Follow the <a href="#1-set-up-eye-tracking-and-independent-gaze-first">Singularity Magisk setup in section 1</a>; it has been reported working on Horizon OS v2.7.</td></tr>
+                <tr><td>Tongue disappears in some positions</td><td>Check that your <strong>newly trained model</strong> actually loaded in Activity. Record those positions again and retrain.</td></tr>
+                <tr><td>Pupils seem too jumpy</td><td>Lower <strong>Pupil response</strong> and hold your gaze steady while tracking warms up.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>If Windows will not let you delete an older extracted Qpro folder, close its Hub and camera preview first. If the folder is still in use, open <strong>Task Manager &gt; Details</strong>, end a leftover <code>adb.exe</code> process, then try again. Ending <code>adb.exe</code> temporarily disconnects any other Android tools using that ADB server.</p>
+          <p>If you need help, copy the relevant lines from <strong>Activity</strong> and tell us your Quest firmware version, whether you used USB or wireless, and which release ZIP you downloaded. You can ask in the <a href="https://discord.gg/ghvuJTpRu4">community Discord</a>. The server is not owned by Fwooffy.</p>
+        </section>
+
+        <section id="project-credit" class="guide-section project-credit">
+          <p class="section-kicker">Project and license</p>
+          <h2>Qpro-Enhanced-FT-Wireless</h2>
+          <p>This guide and QproFaceTracking V2.0.2 are by <strong>Fwooffy</strong>. Visit the <a href="https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless">Qpro-Enhanced-FT-Wireless repository</a> for releases, source code, issues, and current project information.</p>
+          <details class="license-notice">
+            <summary>MIT License notice</summary>
+            <p>MIT License</p>
+            <p>Copyright (c) 2026 QproFaceTracking contributors</p>
+            <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+            <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+            <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+          </details>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer"><span>Quest Root Guides</span><a href="../../">Back to all guides</a></footer>
+  <script src="../../assets/site.js?v=20260927"></script>
+</body>
+</html>
