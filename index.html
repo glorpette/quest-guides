@@ -23,7 +23,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">Community documentation</p>
-        <h1 id="hero-title">Rooting guides for Meta Quest</h1>
+        <h1 id="hero-title">Rooting and face tracking guides for Meta Quest</h1>
         <p class="hero-lede">Clear, carefully structured walkthroughs for supported headsets—and the enhanced face-tracking possibilities a rooted setup can unlock.</p>
       </div>
       <div class="hero-orbit" aria-hidden="true">
@@ -38,49 +38,74 @@
           <p class="eyebrow">Guide library</p>
           <h2 id="guides-title">Start here</h2>
         </div>
-        <span class="guide-count">3 guides</span>
+        <span class="guide-count">4 guides</span>
       </div>
 
-      <div class="guide-list">
-      <article class="guide-card">
-        <div class="guide-card-topline">
-          <span class="tag">Windows / Linux guide</span>
-          <span class="reading-time">Beginner</span>
-        </div>
-        <h3>Root your Meta Quest with Singularity</h3>
-        <p>Developer Mode, Windows or Linux ADB setup, compatibility checks, installation, Wireless ADB, rooting, and final verification for Quest 2, Quest Pro, Quest 3, and Quest 3S.</p>
-        <div class="card-footer">
-          <span>By Fwooffy</span>
-          <a class="button" href="guides/root-guide/">Read the guide <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
+      <section class="guide-category" aria-labelledby="rooting-guides-title">
+        <h3 class="category-heading" id="rooting-guides-title">Rooting</h3>
+        <div class="guide-list">
+          <article class="guide-card">
+            <div class="guide-card-topline">
+              <span class="tag">Windows / Linux guide</span>
+              <span class="reading-time">Beginner</span>
+            </div>
+            <h3>Root your Meta Quest with Singularity</h3>
+            <p>Developer Mode, Windows or Linux ADB setup, compatibility checks, installation, Wireless ADB, rooting, and final verification for Quest 2, Quest Pro, Quest 3, and Quest 3S.</p>
+            <div class="card-footer">
+              <span>By Fwooffy</span>
+              <a class="button" href="guides/root-guide/">Read the guide <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
 
-      <article class="guide-card">
-        <div class="guide-card-topline">
-          <span class="tag">New in-headset method</span>
-          <span class="reading-time">Experimental</span>
+          <article class="guide-card">
+            <div class="guide-card-topline">
+              <span class="tag">New in-headset method</span>
+              <span class="reading-time">Experimental</span>
+            </div>
+            <h3>Root without Meta Developer Mode</h3>
+            <p>Prevent forced updates, install Singularity from inside the headset, enable Android debugging locally, pair Wireless Debugging, and preserve the vulnerable firmware.</p>
+            <div class="card-footer">
+              <span>Method shared by @veusepe</span>
+              <a class="button" href="guides/root-guide-without-dev/">Read the guide <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
         </div>
-        <h3>Root without Meta Developer Mode</h3>
-        <p>Prevent forced updates, install Singularity from inside the headset, enable Android debugging locally, pair Wireless Debugging, and preserve the vulnerable firmware.</p>
-        <div class="card-footer">
-          <span>Method shared by @veusepe</span>
-          <a class="button" href="guides/root-guide-without-dev/">Read the guide <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
+      </section>
 
-      <article class="guide-card">
-        <div class="guide-card-topline">
-          <span class="tag">Quest Pro face tracking</span>
-          <span class="reading-time">QproFaceTracking V2.0.2</span>
+      <section class="guide-category" aria-labelledby="face-tracking-guides-title">
+        <h3 class="category-heading" id="face-tracking-guides-title">Face tracking</h3>
+        <p class="category-description">Enhanced face tracking is only available on a rooted Meta Quest Pro.<br>The following guides show how to set up independent eye gaze, tongue tracking, pupil dilation, and USB or wireless tracking.</p>
+        <p class="category-description">There are multiple projects to choose from, depending on your desired setup and platform.</p>
+        <div class="guide-list">
+          <article class="guide-card">
+            <div class="guide-card-topline">
+              <span class="tag">Quest Pro face tracking</span>
+              <span class="tag">Runs on PC</span>
+              <span class="reading-time">QproFaceTracking V2.0.2</span>
+            </div>
+            <h3>Enhanced face tracking (QproFaceTracking)</h3>
+            <p>Set up independent eye gaze, tongue tracking, pupil dilation, and USB or wireless tracking with QproFaceTracking on a rooted Meta Quest Pro. Runs on PC and supports Windows + Virtual Desktop or Steamlink.</p>
+            <div class="card-footer">
+              <span>Guide and project by Fwooffy</span>
+              <a class="button" href="guides/qprofacetracking/">Read the guide <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="guide-card-topline">
+              <span class="tag">Quest Pro face tracking</span>
+              <span class="tag">Runs on headset</span>
+              <span class="reading-time">BoltOn V0.6.0</span>
+            </div>
+            <h3>Enhanced face tracking (BoltOn)</h3>
+            <p>Set up independent eye gaze, tongue tracking, pupil dilation, and wireless tracking with BoltOn on a rooted Meta Quest Pro. Runs on headset and supports Windows or Linux + Virtual Desktop, Steamlink, WiVRn and ALVR.</p>
+            <div class="card-footer">
+              <span>Project by Walaryne, Guide by otter_oasis</span>
+              <a class="button" href="guides/bolton/">Read the guide <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
         </div>
-        <h3>Enhanced face tracking setup</h3>
-        <p>Set up independent eye gaze, tongue tracking, pupil dilation, and USB or wireless tracking with QproFaceTracking on a rooted Meta Quest Pro.</p>
-        <div class="card-footer">
-          <span>Guide and project by Fwooffy</span>
-          <a class="button" href="guides/enhanced-face-tracking/">Read the guide <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-      </div>
+      </section>
     </section>
 
     <aside id="about" class="warning-strip" aria-label="Safety note">
