@@ -253,6 +253,10 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .comparison-footnote { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.4; }
 table { width: 100%; border-collapse: collapse; font-size: .92rem; }
 th, td { padding: 14px 16px; text-align: left; white-space: nowrap; }
+.mode-table th, .mode-table td { white-space: normal; }
+.mode-table td:nth-child(2), .mode-table td:nth-child(3) { text-align: left; }
+.mode-status { display: inline-flex; align-items: center; gap: 7px; }
+.mode-status-icon { width: 17px; height: 17px; flex: none; }
 .comparison-summary th, .comparison-summary td { white-space: normal; }
 th { color: white; background: var(--navy-900); font-size: .8rem; letter-spacing: .02em; }
 tbody tr:nth-child(odd) { background: var(--surface-soft); }

@@ -101,17 +101,45 @@
           <p class="section-kicker">Configuration</p>
           <h2>Selecting BoltOn Mode</h2>
           <p>BoltOn has two modes of operation: Direct and VRCFaceTracking. Direct mode communicates directly with VRChat, while VRCFaceTracking mode communicates with the VRCFT software on your PC. Both methods communicate through your chosen VR streaming application (such as Virtual Desktop, Steam Link, WiVRn, etc).</p>
-          <p>This section will guide you through the process of selecting the appropriate mode for your needs.</p>
-          <aside class="callout caution"><h3>Using Steam link?</h3><p>BoltOn only supports Steam Link while running in Direct mode. VRCFaceTracking mode is not supported with Steam Link and will cause issues with gaze.</p><h3>Using ALVR or an ALXR derivative (such as WiVRn) with VRCFT?</h3><p>If you are using a streamer that communicates in the ALXR protocol AND are using VRCFaceTracking mode, you must modify your VRCFT's local ALXR module config to enable <code>FBFaceTrackingV2TongueHack</code>, otherwise your tongue will not be tracked.</p></aside><br>
-          <p>Depending on your chosen streamer, you may need to select the appropriate mode in the BoltOn Calibrator app. By default, BoltOn will start in VRCFT mode, however Direct may work better depending on your setup. If you are not using VRCFaceTracking or your streamer doesn't work with VRCFT mode, you will need to switch to Direct mode in the app settings.</p>
-          <p>Virtual Desktop users can use whichever mode is preferred, ALVR and WiVRn users should use Direct mode for best results but can use VRCFT mode if they prefer (as long as they have the ALXR module configured correctly). Steam Link users must use Direct mode, as VRCFT mode is not supported with Steam Link.</p>
-          <p>If you are using a different streamer, we recommend testing Direct first, and then VRCFT if necessary.</p>
-
-          <p>To change mode:</p>
-          <ol>
-            <li>Switch to the <strong>Settings</strong> tab in the BoltOn Calibrator app.</li>
-            <li>Select the desired mode: <strong>Direct</strong> or <strong>VRCFT</strong>.</li>
-          </ol>
+          <p>Use this table as a starting point; recommendations can depend on your setup.</p>
+          <div class="table-wrap">
+            <table class="mode-table">
+              <caption>BoltOn mode recommendations by VR streamer</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Streamer</th>
+                  <th scope="col">Direct</th>
+                  <th scope="col">VRCFT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Virtual Desktop</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-star.svg" alt="" aria-hidden="true">Recommended</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Steam Link</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-star.svg" alt="" aria-hidden="true">Recommended</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-cross.svg" alt="" aria-hidden="true">Not supported</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">ALVR / ALXR / WiVRn</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-cross.svg" alt="" aria-hidden="true">Not supported</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-star.svg" alt="" aria-hidden="true">Recommended*</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Other / unlisted</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-ellipsis.svg" alt="" aria-hidden="true">Try first</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-ellipsis.svg" alt="" aria-hidden="true">Try if Direct doesn't work</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="footnote">* With VRCFT and an ALXR-protocol streamer such as ALVR or WiVRn, enable <code>FBFaceTrackingV2TongueHack</code> in VRCFT's local ALXR module config for tongue tracking. Failure to do this will result in the tongue not tracking.</p>
+          <aside class="callout caution"><h3>Using Steam link?</h3><p>BoltOn only supports Steam Link while running in Direct mode. VRCFaceTracking mode is not supported with Steam Link and will cause issues with gaze.</p></aside><br>
+          <p>To select a mode, open the <strong>Settings</strong> tab in BoltOn Calibrator and choose <strong>Direct</strong> or <strong>VRCFT</strong>. BoltOn starts in VRCFT mode by default.</p>
+          <p>If a mode is not working with your streamer, try the other mode where the table indicates it may be suitable.</p>
         </section>
 
         <section id="troubleshooting" class="guide-section">
