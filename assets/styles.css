@@ -144,6 +144,7 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .guide-card p { max-width: 720px; margin: 0 0 30px; color: var(--muted); font-size: 1.04rem; }
 .card-footer { padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
 .button { display: inline-flex; align-items: center; gap: 9px; padding: 11px 17px; border-radius: 6px; color: white; background: linear-gradient(110deg, var(--blue-dark), var(--blue)); font-weight: 800; text-decoration: none; box-shadow: 0 7px 18px rgba(8,102,255,.22); }
+.card-footer .button { flex-shrink: 0; white-space: nowrap; }
 .button:hover { color: white; background: var(--blue-dark); transform: translateY(-1px); }
 
 @media (min-width: 960px) {
@@ -248,8 +249,11 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .command-field button:hover { color: var(--blue-dark); background: var(--paper); }
 .command-note span { color: var(--muted); font-size: .92rem; }
 .table-wrap { overflow-x: auto; margin: 22px 0 30px; border: 1px solid var(--line); border-radius: 7px; }
+.comparison-table { margin-bottom: 8px; }
+.comparison-footnote { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.4; }
 table { width: 100%; border-collapse: collapse; font-size: .92rem; }
 th, td { padding: 14px 16px; text-align: left; white-space: nowrap; }
+.comparison-summary th, .comparison-summary td { white-space: normal; }
 th { color: white; background: var(--navy-900); font-size: .8rem; letter-spacing: .02em; }
 tbody tr:nth-child(odd) { background: var(--surface-soft); }
 tbody tr + tr { border-top: 1px solid var(--line); }

@@ -70,12 +70,16 @@
             </div>
           </article>
         </div>
+          <br>
+          <aside id="about" class="warning-strip" aria-label="Safety note">
+            <strong>Before you begin</strong>
+            <span>Rooting is experimental. Confirm support for your exact headset and firmware build before following any guide.</span>
+          </aside>
       </section>
 
       <section class="guide-category" aria-labelledby="face-tracking-guides-title">
         <h3 class="category-heading" id="face-tracking-guides-title">Face tracking</h3>
-        <p class="category-description">Enhanced face tracking is only available on a rooted Meta Quest Pro.<br>The following guides show how to set up independent eye gaze, tongue tracking, pupil dilation, and USB or wireless tracking.</p>
-        <p class="category-description">There are multiple projects to choose from, depending on your desired setup and platform.</p>
+        <aside class="callout info" aria-labelledby="comparison-help-title"><h3>Quest Pro Only!</h3><p>Enhanced face tracking is only available on a rooted Meta Quest Pro.<br>There are multiple projects to choose from, depending on your desired setup and platform.</p><h3 id="comparison-help-title">Struggling to pick?</h3><p>If you are unsure about the differences between the face-tracking projects, compare their features below.</p></aside><br>
         <div class="guide-list">
           <article class="guide-card">
             <div class="guide-card-topline">
@@ -105,13 +109,58 @@
             </div>
           </article>
         </div>
+        <div class="table-wrap comparison-table">
+          <table>
+            <caption>Eye tracking projects feature comparison</caption>
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">QproFaceTracking</th>
+                <th scope="col">BoltOn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="comparison-summary">
+                <th scope="row">What sets it apart</th>
+                <td>A windows only solution with more advanced hardware access, own model creation capabilities and USB support.</td>
+                <td>A universal solution that runs directly on the Quest Pro; skipping processing overhead on the PC. Supports Windows and Linux, supports multiple VR streaming tools, easier setup.</td>
+              </tr>
+              <tr>
+                <th scope="row">Tracking features</th>
+                <td>Eye gaze, tongue tracking, and pupil dilation.</td>
+                <td>Eye gaze, tongue tracking, and pupil dilation.</td>
+              </tr>
+              <tr>
+                <th scope="row">Where model runs</th>
+                <td>Windows PC.</td>
+                <td>Quest Pro (on headset).</td>
+              </tr>
+              <tr>
+                <th scope="row">Connectivity</th>
+                <td>USB or Wireless to QproFaceTracking Hub.</td>
+                <td>Wireless via streaming app.</td>
+              </tr>
+              <tr>
+                <th scope="row">Streamer support</th>
+                <td>Virtual Desktop, Steam Link.</td>
+                <td>Virtual Desktop, Steam Link*, WiVRn, ALVR, potentially others.</td>
+              </tr>
+              <tr>
+                <th scope="row">Tracking output</th>
+                <td>VRCFaceTracking.</td>
+                <td>Direct to VRChat or through VRCFaceTracking.</td>
+              </tr>
+              <tr>
+                <th scope="row">PC OS compatibility</th>
+                <td>Windows.</td>
+                <td>Windows and Linux.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="comparison-footnote">* In Direct to VRChat mode only.</p>
       </section>
     </section>
-
-    <aside id="about" class="warning-strip" aria-label="Safety note">
-      <strong>Before you begin</strong>
-      <span>Rooting is experimental. Confirm support for your exact headset and firmware build before following any guide.</span>
-    </aside>
   </main>
 
   <footer class="site-footer">
