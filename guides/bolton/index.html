@@ -42,6 +42,7 @@
           <a href="#1-set-up-eye-tracking-and-independent-gaze-first">Pre-setup for Eye tracking</a>
           <a href="#setup">Setup</a>
           <a href="#calibration">Calibration</a>
+          <a href="#mode">Mode Selection</a>
           <a href="#troubleshooting">Troubleshooting</a>
           <a href="#references">References and credit</a>
         </nav>
@@ -51,10 +52,12 @@
         <section id="before-you-start" class="guide-section">
           <div class="callout caution source-quote">
             <p><strong>BETA!</strong> BoltOn is in beta and is rapidly evolving. Changes and improvements will happen over time. BoltOn contains an automatic update feature, so only an initial setup is required.</p>
-            <p><strong>Before you start: you need a rooted Meta Quest Pro.</strong> This program will not work on an unrooted headset or a different Quest model. If you still need to root your Quest Pro, use <a href="https://github.com/glorpette/quest-guides/blob/main/root_guide_by_fwooffy.md">Fwooffy and glorpette's beginner root guide</a>. Check that your headset's exact software version is supported by <a href="https://github.com/Lumince/singularity">Singularity</a> before following a root guide.</p>
+            <p><strong>Before you start: you need a rooted Meta Quest Pro.</strong> This program will not work on an unrooted headset or a different Quest model. If you still need to root your Quest Pro, use one of the root guides available on the homepage. Check that your headset's exact software version is supported by <a href="https://github.com/Lumince/singularity">Singularity</a> before following a root guide.</p>
             <p><strong>BoltOn has multiple modes.</strong> BoltOn can be ran in Direct or VRCFaceTracking mode. Direct mode uses OSC over your streamer app to communicate directly to VRChat without the need for additional Software. VRCFaceTracking mode communicates to VRCFT over the streamer app and requires the <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">VRCFaceTracking software</a> to be installed on your PC through Steam.</p>
             <p><strong>Other streamers may be supported.</strong> BoltOn has been tested with Virtual Desktop, Steamlink, WiVRn and ALVR. Other streamers that expose face tracking traffic may also be compatible.</p>
           </div>
+
+          <aside class="callout info"><h3>We want YOU!</h3>BoltOn is looking for contributors to upload datasets to help further improve the facial tracking models! The more data, the better the algorithm will become. If you are interested, please </aside><br>
 
           <p>Start by installing BoltOn onto your Quest Pro. This app will communicate to either VRCFT or VRChat directly, via your streamer app.</p>
         </section>
@@ -72,9 +75,9 @@
           <p class="section-kicker">Installation</p>
           <h2>Install and Set up BoltOn</h2>
           <ol>
-            <li>Download the latest BoltOn <strong>APK file</strong> from <a href="https://github.com/BoltOn-Development/BoltOn-QPro-App/releases">this project's Releases page</a>. Choose the named BoltOn APK, <strong>not</strong> GitHub's “Source code” ZIP.</li>
-            <li>Transfer the APK file to your Quest Pro via USB.</li>
-            <li>On the Quest Pro, open the <strong>Files</strong> app and navigate to the APK file. Tap the hamburger menu and select Open with, and choose <strong>Package Installer.</strong></li>
+            <li>Open the <strong>Browser</strong> app on your Quest Pro and visit <strong><a href="https://tinyurl.com/BoltOnVR" target="_blank">tinyurl.com/BoltOnVR</a></strong> to download the APK file. (This link redirects to GitHub and downloads the latest release APK automatically)</li>
+            <aside class="callout info"><h3>Alternative Method</h3><ol><li>Download the latest BoltOn <strong>APK file</strong> from <a href="https://github.com/BoltOn-Development/BoltOn-QPro-App/releases">this project's Releases page</a>. Choose the named BoltOn APK, <strong>not</strong> GitHub's “Source code” ZIP.</li><li>Transfer the APK file to your Quest Pro via USB.</li></ol></aside><br>
+            <li>Once the APK is on your headset, open the <strong>Files</strong> app and navigate to the APK file. Tap the hamburger menu and select Open with, and choose <strong>Package Installer.</strong> Alternatively, APKs can be installed from inside Singularity.</li>
             <li>Follow the prompts to install BoltOn. If you see a warning about installing apps from unknown sources, allow it and confirm that you want to proceed.</li>
             <li>Once installed, open the BoltOn Calibrator app. You should be prompted to grant superuser permission from Singularity-Magisk for the app, please allow it.</li>
             <li>Once the app is opened, click <strong>Install Magisk Module</strong> to install the required tracking module. Please restart your headset after installation finishes to apply it.</li>
@@ -91,6 +94,23 @@
             <li>Follow the on-screen instructions to perform the calibration. This will involve making facial expressions.</li>
             <li>Once calibration is completed, click <strong>Save</strong> to save the new profile to the device.</li>
             <li>Test the face tracking in the <strong>Live Preview</strong> tab, or your desired application to ensure it is working as expected. If you encounter issues, you may need to repeat the calibration process.</li>
+          </ol>
+        </section>
+
+        <section id="mode" class="guide-section">
+          <p class="section-kicker">Configuration</p>
+          <h2>Selecting BoltOn Mode</h2>
+          <p>BoltOn has two modes of operation: Direct and VRCFaceTracking. Direct mode communicates directly with VRChat, while VRCFaceTracking mode communicates with the VRCFT software on your PC. Both methods communicate through your chosen VR streaming application (such as Virtual Desktop, Steam Link, WiVRn, etc).</p>
+          <p>This section will guide you through the process of selecting the appropriate mode for your needs.</p>
+          <aside class="callout caution"><h3>Using Steam link?</h3><p>BoltOn only supports Steam Link while running in Direct mode. VRCFaceTracking mode is not supported with Steam Link and will cause issues with gaze.</p><h3>Using ALVR or an ALXR derivative (such as WiVRn) with VRCFT?</h3><p>If you are using a streamer that communicates in the ALXR protocol AND are using VRCFaceTracking mode, you must modify your VRCFT's local ALXR module config to enable <code>FBFaceTrackingV2TongueHack</code>, otherwise your tongue will not be tracked.</p></aside><br>
+          <p>Depending on your chosen streamer, you may need to select the appropriate mode in the BoltOn Calibrator app. By default, BoltOn will start in Direct mode, and this should work for most streamers. If you are using VRCFaceTracking or your streamer doesn't work with Direct mode, you will need to switch to VRCFT mode in the app settings.</p>
+          <p>Virtual Desktop users can use whichever mode is preferred, ALVR and WiVRn users should use Direct mode for best results but can use VRCFT mode if they prefer (as long as they have the ALXR module configured correctly). Steam Link users must use Direct mode, as VRCFT mode is not supported with Steam Link.</p>
+          <p>If you are using a different streamer, we recommend testing Direct first, and then VRCFT if necessary.</p>
+
+          <p>To change mode:</p>
+          <ol>
+            <li>Switch to the <strong>Settings</strong> tab in the BoltOn Calibrator app.</li>
+            <li>Select the desired mode: <strong>Direct</strong> or <strong>VRCFT</strong>.</li>
           </ol>
         </section>
 
@@ -115,15 +135,15 @@
           <p class="section-kicker">Project and License</p>
           <h2>BoltOn</h2>
           <p>BoltOn is produced by <strong>Walaryne</strong> along with a community of contributors and testers.</p>
-          <p>BoltOn is an open-source project licensed under the MIT License. You can find the source code and contribute at the <a href="https://github.com/BoltOn-Development/BoltOn-QPro-App">BoltOn repository</a>.</p>
+          <p>BoltOn is an open-source project with source code releasing shortly. You will be able to find the source code and contribute at the <a href="https://github.com/BoltOn-Development/BoltOn-QPro-App">BoltOn repository</a>.</p>
+          <p>BoltOn is licence pending, however it will be under an open-source license soon.</p>
           <p>This guide is produced by <strong>otter_oasis.</strong></p>
           <details class="license-notice">
-            <summary>MIT License notice</summary>
-            <p>MIT License</p>
-            <p>Copyright (c) 2026 BoltOn contributors</p>
-            <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-            <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-            <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+            <summary>Pending License notice</summary>
+            <p>Pending License</p>
+            <p>BoltOn is pending licence while the best licence is being determined for this project.</p>
+            <p>Once the licence is determined, the source code will be released and the licence notice will be updated.</p>
+            <p>It is assumed that the license will be generally permissive.</p>
           </details>
         </section>
       </article>
