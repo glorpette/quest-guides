@@ -13,7 +13,8 @@ Community-maintained guides for rooting supported Meta Quest headsets and explor
 | --- | --- | --- | --- |
 | **Root Your Meta Quest with Singularity** | Windows and Linux | Quest 2, Quest Pro, Quest 3, and Quest 3S | [Website](https://guides.mxr.lol/guides/root-guide/) · [Markdown](root_guide_by_fwooffy.md) |
 | **Root Without Meta Developer Mode** | In-headset | Check the current Singularity compatibility list | [Website](https://guides.mxr.lol/how-to-root-without-dev-mode/) |
-| **QproFaceTracking V2.0.2 Setup Guide** | Windows | Rooted Quest Pro | [Website](https://guides.mxr.lol/guides/enhanced-face-tracking/) · [Project repository](https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless) |
+| **QproFaceTracking V2.0.2 Setup Guide** | Windows | Rooted Quest Pro | [Website](https://guides.mxr.lol/guides/qprofacetracking/) · [Project repository](https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless) |
+| **BoltOn Face Tracking V0.6.0 Setup Guide** | In-headset | Rooted Quest Pro | [Website](https://guides.mxr.lol/guides/bolton) · [Project repository](https://github.com/BoltOn-Development/BoltOn-QPro-App) |
 
 ## Read this first
 
@@ -36,9 +37,11 @@ Community-maintained guides for rooting supported Meta Quest headsets and explor
 
 ## Credits
 
+- **Lumince** - Creator of Singularity.
 - **Fwooffy** — creator of the original Singularity rooting guide and its research. [GitHub profile](https://github.com/Fwooffy)
 - **Fwooffy and the QproFaceTracking contributors** — creators and maintainers of [Qpro-Enhanced-FT-Wireless](https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless) and its enhanced face tracking setup guide.
-- **otter_oasis** — contributor of the Linux-specific instructions for the rooting guide.
+- **otter_oasis** — contributor of the Linux-specific instructions for the rooting guide and the BoltOn setup guide.
+- **Walaryne and the BoltOn contributors and testers** - Creators, maintainers and testers of [BoltOn](https://github.com/BoltOn-Development/BoltOn-QPro-App).
 - **@veusepe** — source of the community in-headset method that avoids Meta account-level Developer Mode.
 
 Project software, external research, and referenced documentation remain credited to their respective creators and maintainers.

@@ -128,11 +128,13 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .orbit-core { position: absolute; inset: 50%; display: grid; place-items: center; width: 76px; height: 76px; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,.16); border-radius: 12px; background: rgba(255,255,255,.96); box-shadow: 0 0 60px rgba(8,102,255,.4); }
 .orbit-core img { display: block; width: 46px; height: auto; }
 
-.library { width: min(calc(100% - 40px), 900px); margin: 84px auto; }
+.library { width: min(calc(100% - 40px), 1120px); margin: 84px auto; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
 .section-heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); }
 .guide-count { padding: 8px 13px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); background: var(--paper); font-size: .84rem; font-weight: 750; }
 
+.guide-category + .guide-category { margin-top: 44px; }
+.category-heading { margin: 0 0 16px; color: var(--blue-dark); font-size: 1.3rem; }
 .guide-list { display: grid; gap: 24px; }
 .guide-card { padding: clamp(28px, 5vw, 48px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--paper); box-shadow: 0 16px 45px rgba(17,37,64,.07); }
 .guide-card-topline, .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
@@ -142,7 +144,14 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .guide-card p { max-width: 720px; margin: 0 0 30px; color: var(--muted); font-size: 1.04rem; }
 .card-footer { padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
 .button { display: inline-flex; align-items: center; gap: 9px; padding: 11px 17px; border-radius: 6px; color: white; background: linear-gradient(110deg, var(--blue-dark), var(--blue)); font-weight: 800; text-decoration: none; box-shadow: 0 7px 18px rgba(8,102,255,.22); }
+.card-footer .button { flex-shrink: 0; white-space: nowrap; }
 .button:hover { color: white; background: var(--blue-dark); transform: translateY(-1px); }
+
+@media (min-width: 960px) {
+  .guide-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .guide-card { display: flex; flex-direction: column; }
+  .card-footer { margin-top: auto; }
+}
 
 .warning-strip { display: grid; grid-template-columns: 180px 1fr; gap: 28px; width: min(calc(100% - 40px), 900px); margin: 0 auto 84px; padding: 28px 32px; border-left: 4px solid #d45e21; border-radius: 0 var(--radius-md) var(--radius-md) 0; color: var(--ink); background: var(--warm); }
 .warning-strip strong { color: var(--warm-ink); text-transform: uppercase; letter-spacing: .04em; }
@@ -240,8 +249,17 @@ h1 { max-width: 720px; margin-bottom: 22px; font-size: clamp(2.6rem, 6.8vw, 5rem
 .command-field button:hover { color: var(--blue-dark); background: var(--paper); }
 .command-note span { color: var(--muted); font-size: .92rem; }
 .table-wrap { overflow-x: auto; margin: 22px 0 30px; border: 1px solid var(--line); border-radius: 7px; }
+.comparison-table { margin-bottom: 8px; }
+.comparison-footnote { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.4; }
 table { width: 100%; border-collapse: collapse; font-size: .92rem; }
 th, td { padding: 14px 16px; text-align: left; white-space: nowrap; }
+.troubleshooting-table { table-layout: fixed; }
+.troubleshooting-table th, .troubleshooting-table td, .troubleshooting-table td code { white-space: normal; overflow-wrap: anywhere; }
+.mode-table th, .mode-table td { white-space: normal; }
+.mode-table td:nth-child(2), .mode-table td:nth-child(3) { text-align: left; }
+.mode-status { display: inline-flex; align-items: center; gap: 7px; }
+.mode-status-icon { width: 17px; height: 17px; flex: none; }
+.comparison-summary th, .comparison-summary td { white-space: normal; }
 th { color: white; background: var(--navy-900); font-size: .8rem; letter-spacing: .02em; }
 tbody tr:nth-child(odd) { background: var(--surface-soft); }
 tbody tr + tr { border-top: 1px solid var(--line); }

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A setup guide for BoltOn enhanced face tracking on a rooted Meta Quest Pro.">
+  <meta name="theme-color" content="#112540">
+  <title>BoltOn Setup Guide</title>
+  <link rel="canonical" href="https://guides.mxr.lol/guides/bolton/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/meta-logo.svg">
+  <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body class="guide-page">
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <a class="skip-link" href="#guide-content">Skip to guide</a>
+  <header class="site-header">
+    <a class="brand" href="../../">
+      <span class="brand-mark" aria-hidden="true"><img src="../../assets/meta-logo.svg" alt=""></span>
+      <span>Quest Root Guides</span>
+    </a>
+    <a class="header-link" href="../../">Back to all guides</a>
+  </header>
+
+  <main id="guide-content">
+    <header class="guide-hero">
+      <p class="eyebrow">Quest Pro · Enhanced face tracking</p>
+      <h1>BoltOn V0.6.0:<br><span>text setup guide</span></h1>
+            <p class="device-list">On-headset processing <i>/</i> Independent eye gaze <i>/</i> Tongue tracking <i>/</i> Pupil dilation <i>/</i> wireless via streamer</p>
+      <p class="guide-intro">Setup BoltOn on headset for enhanced face tracking on a rooted Meta Quest Pro.</p>
+      <div class="guide-meta">
+        <span>Guide by <strong>otter_oasis</strong></span>
+        <span>Project by <strong>Walaryne</strong></span>
+        <a href="https://github.com/BoltOn-Development/BoltOn-QPro-App">BoltOn</a></span></div>
+      </div>
+    </header>
+
+    <div class="guide-shell">
+      <aside class="guide-nav" aria-label="Guide contents">
+        <p class="nav-label">On this page</p>
+        <nav>
+          <a href="#before-you-start">Before you start</a>
+          <a href="#1-set-up-eye-tracking-and-independent-gaze-first">Pre-setup for Eye tracking</a>
+          <a href="#setup">Setup</a>
+          <a href="#calibration">Calibration</a>
+          <a href="#mode">Mode Selection</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#references">References and credit</a>
+        </nav>
+      </aside>
+
+      <article class="guide-article">
+        <section id="before-you-start" class="guide-section">
+          <div class="callout caution source-quote">
+            <p><strong>BETA!</strong> BoltOn is in beta and is rapidly evolving. Changes and improvements will happen over time. BoltOn contains an automatic update feature, so only an initial setup is required.</p>
+            <p><strong>Before you start: you need a rooted Meta Quest Pro.</strong> This program will not work on an unrooted headset or a different Quest model. If you still need to root your Quest Pro, use one of the root guides available on the homepage. Check that your headset's exact software version is supported by <a href="https://github.com/Lumince/singularity">Singularity</a> before following a root guide.</p>
+            <p><strong>BoltOn has multiple modes.</strong> BoltOn can be ran in Direct or VRCFaceTracking mode. Direct mode uses OSC over your streamer app to communicate directly to VRChat without the need for additional Software. VRCFaceTracking mode communicates to VRCFT over the streamer app and requires the <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">VRCFaceTracking software</a> to be installed on your PC through Steam.</p>
+            <p><strong>Other streamers may be supported.</strong> BoltOn has been tested with Virtual Desktop, Steamlink, WiVRn and ALVR. Other streamers that expose face tracking traffic may also be compatible.</p>
+          </div>
+
+          <aside class="callout info"><h3>We want YOU!</h3>BoltOn is looking for contributors to upload datasets to help further improve the facial tracking models! The more data, the better the algorithm will become. More info will be posted here when available.</aside><br>
+
+          <p>Start by installing BoltOn onto your Quest Pro. This app will communicate to either VRCFT or VRChat directly, via your streamer app.</p>
+        </section>
+
+        <section id="1-set-up-eye-tracking-and-independent-gaze-first" class="guide-section">
+          <h2>Set up eye tracking and independent gaze first</h2>
+          <ol>
+            <li>On the rooted Quest Pro, open <strong>Settings &gt; Movement Settings</strong>. Turn on <strong>Eye Tracking</strong> and <strong>Natural Facial Expressions</strong>, then run eye calibration if offered. If these are already enabled, leave them on.</li>
+            <li>If <strong>Magisk OverlayFS</strong> is not installed yet, open <strong>Singularity &gt; Apps/Modules &gt; Magisk repo</strong> and install it. Follow any reboot prompts. If it is already enabled in Magisk, you can skip reinstalling it.</li>
+            <li>In the same Singularity menu, install <strong>Quest Pro Independent Eye Gaze</strong> if it is not installed yet. Reboot if prompted, then check in Magisk that both modules are enabled. This is the headset-side independent gaze route.</li>
+          </ol>
+        </section>
+
+        <section id="setup" class="guide-section">
+          <p class="section-kicker">Installation</p>
+          <h2>Install and Set up BoltOn</h2>
+          <ol>
+            <li>Open <strong>Singularity</strong> and install the BoltOn app from Apps/Modules.</li>
+            <aside class="callout info"><h3>Alternative Method 1</h3><p>Open the <strong>Browser</strong> app on your Quest Pro and visit <strong><a href="https://tinyurl.com/BoltOnVR" target="_blank">tinyurl.com/BoltOnVR</a></strong> to download the APK file. (This link redirects to GitHub and downloads the latest release APK automatically)</p><h3>Alternative Method 2</h3><p>Download the latest BoltOn <strong>APK file</strong> from <a href="https://github.com/BoltOn-Development/BoltOn-QPro-App/releases">this project's Releases page</a>. Choose the named BoltOn APK, <strong>not</strong> GitHub's “Source code” ZIP. Transfer the APK file to your Quest Pro via USB.</p><br><p>Once the APK is on your headset, open the <strong>Files</strong> app and navigate to the APK file. Tap the hamburger menu and select Open with, and choose <strong>Package Installer.</strong> Alternatively, APKs can be installed from inside Singularity.</p><p>Follow the prompts to install BoltOn. If you see a warning about installing apps from unknown sources, allow it and confirm that you want to proceed.</p></aside><br>
+            <li>Once installed, open the BoltOn Calibrator app. You should be prompted to grant superuser permission from Singularity-Magisk for the app, please allow it.</li>
+            <li>Once the app is opened, click <strong>Install Magisk Module</strong> to install the required tracking module. Please restart your headset after installation finishes to apply it.</li>
+          </ol>
+          <aside class="callout info"><h3>No prompt?</h3><p>If you dont get a prompt, open the <strong>Singularity-Magisk</strong> app, go to the <strong>Superuser</strong> section and grant permission to the <strong>BoltOn Calibrator.</strong></p><h3>Don't see the app after install?</h3><p>The app may not appear in your main app list. Search for <strong>BoltOn</strong> in the app drawer and choose <strong>BoltOn Calibrator.</strong></p></aside>
+        </section>
+
+        <section id="calibration" class="guide-section">
+          <p class="section-kicker">Calibration</p>
+          <h2>Calibrate Face Tracking</h2>
+          <p>This section will guide you through the process of calibrating face tracking for optimal performance. Some users find that the default model works well, while others may need to calibrate for better accuracy.</p>
+          <ol>
+            <li>Switch to the <strong>Calibration</strong> tab in the BoltOn Calibrator app.</li>
+            <li>Follow the on-screen instructions to perform the calibration. This will involve making facial expressions.</li>
+            <li>Once calibration is completed, click <strong>Save</strong> to save the new profile to the device.</li>
+            <li>Test the face tracking in the <strong>Live Preview</strong> tab, or your desired application to ensure it is working as expected. If you encounter issues, you may need to repeat the calibration process.</li>
+          </ol>
+        </section>
+
+        <section id="mode" class="guide-section">
+          <p class="section-kicker">Configuration</p>
+          <h2>Selecting BoltOn Mode</h2>
+          <p>BoltOn has two modes of operation: Direct and VRCFaceTracking. Direct mode communicates directly with VRChat, while VRCFaceTracking mode communicates with the VRCFT software on your PC. Both methods communicate through your chosen VR streaming application (such as Virtual Desktop, Steam Link, WiVRn, etc).</p>
+          <p>Use this table as a starting point; recommendations can depend on your setup.</p>
+          <div class="table-wrap">
+            <table class="mode-table">
+              <caption>BoltOn mode recommendations by VR streamer</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Streamer</th>
+                  <th scope="col">Direct</th>
+                  <th scope="col">VRCFT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Virtual Desktop</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-star.svg" alt="" aria-hidden="true">Recommended, use VD Module</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Steam Link</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-cross.svg" alt="" aria-hidden="true">Not supported</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">ALVR / ALXR / WiVRn</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-cross.svg" alt="" aria-hidden="true">Not supported</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported, use ALXR Local Module*</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Other / unlisted</th>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-ellipsis.svg" alt="" aria-hidden="true">Try first</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-ellipsis.svg" alt="" aria-hidden="true">Try if Direct doesn't work</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="footnote">* With VRCFT and an ALXR-protocol streamer such as ALVR or WiVRn, enable <code>FBFaceTrackingV2TongueHack</code> in VRCFT's local ALXR module config for tongue tracking. Failure to do this will result in the tongue not tracking. If you are on Linux, that is at <strong>/home/&lt;username&gt;/.config/VRCFaceTracking/CustomLibs/&lt;generated id&gt;/ALXRModuleConfig.json</strong></p>
+          <p>To select a mode, open the <strong>Settings</strong> tab in BoltOn Calibrator and choose <strong>Direct</strong> or <strong>VRCFT</strong>. BoltOn starts in VRCFT mode by default.</p>
+          <p>If a mode is not working with your streamer, try the other mode where the table indicates it may be suitable.</p>
+        </section>
+
+        <section id="troubleshooting" class="guide-section">
+          <p class="section-kicker">Help</p>
+          <h2>Troubleshooting</h2>
+          <div class="table-wrap">
+            <table class="troubleshooting-table">
+              <thead><tr><th>What you see</th><th>What to try</th></tr></thead>
+              <tbody>
+                <tr><td>“Root access unavailable”</td><td>Keep the Quest awake. In Magisk, allow <strong>Shell / ADB Shell</strong>, then refresh the connection.</td></tr>
+                <tr><td>Wireless stopped working after a reboot</td><td>Check the Quest's current Wi-Fi address. Wireless ADB may need to be enabled again.</td></tr>
+                <tr><td>Independent gaze or convergence fails but ordinary face tracking works</td><td>Check the Quest's exact firmware build. Follow the <a href="#1-set-up-eye-tracking-and-independent-gaze-first">Singularity Magisk setup in section 1</a>; it has been reported working on Horizon OS v2.7.</td></tr>
+                <tr><td>Tongue disappears in some positions</td><td>Check that your calibrated model is loaded in <strong>Profiles.</strong> You may need to recalibrate in the BoltOn calibrator app.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>If you need help, you can ask in the <a href="https://discord.gg/ghvuJTpRu4">Meta Quest Rooting Support Group Discord</a>. The server is not owned by Walaryne.</p>
+        </section>
+
+        <section id="project" class="guide-section">
+          <p class="section-kicker">Project and License</p>
+          <h2>BoltOn</h2>
+          <p>BoltOn is produced by <strong>Walaryne</strong> along with a community of contributors and testers.</p>
+          <p>BoltOn is an open-source project with source code releasing shortly. You will be able to find the source code and contribute at the <a href="https://github.com/BoltOn-Development/BoltOn-QPro-App">BoltOn repository</a>.</p>
+          <p>BoltOn is licence pending, however it will be under an open-source license soon.</p>
+          <p>This guide is produced by <strong>otter_oasis.</strong></p>
+          <details class="license-notice">
+            <summary>Pending License notice</summary>
+            <p>Pending License</p>
+            <p>BoltOn is pending licence while the best licence is being determined for this project.</p>
+            <p>Once the licence is determined, the source code will be released and the licence notice will be updated.</p>
+            <p>It is assumed that the license will be generally permissive.</p>
+          </details>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>Quest Root Guides</span>
+    <a href="../../">Back to all guides</a>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>
