@@ -7,15 +7,15 @@
   <meta name="theme-color" content="#112540">
   <title>Root Meta Quest Without Meta Developer Mode</title>
   <link rel="canonical" href="https://guides.mxr.lol/how-to-root-without-dev-mode/">
-  <link rel="icon" type="image/svg+xml" href="../assets/meta-logo.svg">
+  <link rel="icon" type="image/svg+xml" href="../../assets/meta-logo.svg">
   <link rel="stylesheet" href="../../assets/styles.css?v=20260925b">
 </head>
 <body class="guide-page">
   <div class="reading-progress" aria-hidden="true"><span></span></div>
   <a class="skip-link" href="#guide-content">Skip to guide</a>
   <header class="site-header">
-    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true"><img src="../assets/meta-logo.svg" alt=""></span><span>Quest Root Guides</span></a>
-    <a class="header-link" href="../guides/root-guide/">Standard setup guide</a>
+    <a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"><img src="../../assets/meta-logo.svg" alt=""></span><span>Quest Root Guides</span></a>
+    <a class="header-link" href="../../guides/root-guide/">Standard setup guide</a>
   </header>
 
   <main id="guide-content">
@@ -55,6 +55,12 @@
             <h2 id="patched-firmware-title">Newer firmware patches the exploit</h2>
             <p>Meta has patched the vulnerability used by Singularity in newer firmware. The latest confirmed vulnerable Quest Pro build in this repository's dated snapshot is <code>51503870024400340</code>. If your headset reports a different or newer build, assume the exploit will not work unless the project explicitly confirms otherwise.</p>
           </aside>
+
+          <aside class="callout warning">
+            <h3>VERY IMPORTANT - READ FIRST OR RISK IRREPAIRABLE DAMAGE</h3>
+            <p><strong>Never manually install Magisk onto the headset.</strong><br>Singularity automatically installs its own modified version of Magisk called Singularity-Magisk instead. Installing base Magisk (thats not designed for the headset) can and has caused <strong><i>irrepairable damage</i></strong> to devices, including the total inability to boot the device at all.<br><i>You have been warned.</i></p>
+          </aside>
+
 
           <ul class="check-list">
             <li>Start with the headset powered off, if possible</li>
