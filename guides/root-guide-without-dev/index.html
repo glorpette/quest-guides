@@ -24,7 +24,7 @@
       <h1>Root your Meta Quest<br><span>without Meta Developer Mode</span></h1>
       <p class="device-list">No developer organization <i>/</i> No PC-side APK install <i>/</i> Singularity v1.0.6.8</p>
       <p class="guide-intro">This path installs Singularity from inside the headset, opens Android's hidden settings, and enables local Android debugging without first enabling Meta account-level Developer Mode.</p>
-      <div class="guide-meta"><span>Method shared by <strong>@veusepe</strong></span><span>Rewritten 26 Sep 2026</span></div>
+      <div class="guide-meta"><span>Method shared by <strong>@veusepe</strong></span><span>Updated 11 Oct 2026</span></div>
     </header>
 
     <div class="guide-shell">
@@ -91,10 +91,9 @@
           <h2>Download and open Singularity</h2>
 
           <div class="steps">
-            <div class="step"><span class="step-number">2</span><div><h3>Install AnExplorer from the Meta Store</h3><p>On the headset, install <a href="https://www.meta.com/experiences/anexplorer-vr-file-manager/6091443354290737/">AnExplorer VR File Manager</a> from the Meta Store. This supplies the file-install path when Meta Developer Mode is not enabled.</p></div></div>
-            <div class="step"><span class="step-number">3</span><div><h3>Download Singularity in the headset browser</h3><p>Open the headset's internet browser and download the APK from the <a href="https://github.com/Lumince/singularity/releases">Singularity release</a>. The community instructions specifically reference this release.</p></div></div>
-            <div class="step"><span class="step-number">4</span><div><h3>Install the APK with AnExplorer</h3><p>Open AnExplorer, select the downloaded APK, and choose <strong>Install</strong>. If another window opens, select the APK again. When Android asks whether AnExplorer may install files, enable the permission, return, and select <strong>Install</strong> again.</p></div></div>
-            <div class="step"><span class="step-number">5</span><div><h3>Open Android Settings</h3><p>Choose <strong>Open Android Settings</strong>, then select the large green <strong>Open</strong> button beneath the icon.</p></div></div>
+            <div class="step"><span class="step-number">2</span><div><h3>Download Singularity in the headset browser</h3><p>Open the headset's internet browser and download the APK from the <a href="https://github.com/Lumince/singularity/releases">Singularity release</a>. The community instructions specifically reference this release.</p></div></div>
+            <div class="step"><span class="step-number">3</span><div><h3>Install the APK</h3><p>Open the <strong>Files</strong> app, then select <strong>Downloads</strong>. Locate the downloaded APK file, click the 3-dot menu, and select <strong>"Open with..."</strong>, and then <strong>Package Installer</strong>.</p></div></div>
+            <div class="step"><span class="step-number">4</span><div><h3>Open Android Settings</h3><p>One installed, open Singularity from Unknown Sources (or search in the app drawer), then choose Apps/Modules and <strong>open Android Settings</strong>.</p></div></div>
           </div>
         </section>
 
@@ -103,9 +102,9 @@
           <h2>Enable local debugging</h2>
 
           <div class="steps">
-            <div class="step"><span class="step-number">6</span><div><h3>Unlock Android Developer Options</h3><p>Scroll to <strong>About headset</strong>, scroll to the bottom, and tap <strong>Build number</strong> repeatedly. A small toast message should confirm that you are now a developer.</p></div></div>
-            <div class="step"><span class="step-number">7</span><div><h3>Turn on USB and Wireless Debugging</h3><p>Go back, open <strong>System &gt; Developer Options</strong>, then enable <strong>USB debugging</strong> and <strong>Wireless Debugging</strong>. Wireless Debugging is slightly indented in the list.</p></div></div>
-            <div class="step"><span class="step-number">8</span><div><h3>Generate a pairing code</h3><p>Select the <strong>Wireless Debugging</strong> heading itself, then choose <strong>Pair device with pairing code</strong>.</p></div></div>
+            <div class="step"><span class="step-number">5</span><div><h3>Unlock Android Developer Options</h3><p>Scroll to <strong>About headset</strong>, scroll to the bottom, and tap <strong>Build number</strong> repeatedly. A small toast message should confirm that you are now a developer.</p></div></div>
+            <div class="step"><span class="step-number">6</span><div><h3>Turn on USB and Wireless Debugging</h3><p>Go back, open <strong>System &gt; Developer Options</strong>, then enable <strong>USB debugging</strong> and <strong>Wireless Debugging</strong>. Wireless Debugging is slightly indented in the list.</p></div></div>
+            <div class="step"><span class="step-number">7</span><div><h3>Generate a pairing code</h3><p>Select the <strong>Wireless Debugging</strong> heading itself, then choose <strong>Pair device with pairing code</strong>.</p></div></div>
           </div>
         </section>
 
@@ -115,11 +114,11 @@
           <aside class="callout info compact-callout"><h3>Do not mix up the ports</h3><p>The temporary pairing dialog and the main Wireless Debugging screen show different <strong>IP address &amp; port</strong> values. Singularity needs both at different stages.</p></aside>
 
           <div class="steps">
-            <div class="step"><span class="step-number">9</span><div><h3>Enter the six-digit pairing code</h3><p>Enter the code in Singularity's <strong>Pairing code</strong> field. If you skipped the setup screen and cannot see that field, restart Singularity from the app list: open the left menu—the three dots and lines beneath Search—and choose <strong>Untrusted Sources</strong>.</p></div></div>
-            <div class="step"><span class="step-number">10</span><div><h3>Enter the temporary pairing port</h3><p>Beneath the pairing code, find <strong>IP address &amp; port</strong>. It should resemble <code>192.168.0.x:PORT</code>. Copy only the value after the colon (<code>:</code>) into Singularity's <strong>Pairing Port</strong> field.</p></div></div>
-            <div class="step"><span class="step-number">11</span><div><h3>Pair the device</h3><p>Select <strong>Pair Device</strong> in Singularity.</p></div></div>
-            <div class="step"><span class="step-number">12</span><div><h3>Read the second port</h3><p>Return to the main Wireless Debugging screen—the screen where you selected the pairing option. Find its other <strong>IP address &amp; port</strong> value. This one is different. Copy the number after the colon.</p></div></div>
-            <div class="step"><span class="step-number">13</span><div><h3>Complete setup</h3><p>Use that second port value in Singularity, then select <strong>Complete Setup</strong>.</p></div></div>
+            <div class="step"><span class="step-number">8</span><div><h3>Enter the six-digit pairing code</h3><p>Enter the code in Singularity's <strong>Pairing code</strong> field. If you skipped the setup screen and cannot see that field, restart Singularity from the app list: open the left menu—the three dots and lines beneath Search—and choose <strong>Untrusted Sources</strong>.</p></div></div>
+            <div class="step"><span class="step-number">9</span><div><h3>Enter the temporary pairing port</h3><p>Beneath the pairing code, find <strong>IP address &amp; port</strong>. It should resemble <code>192.168.0.x:PORT</code>. Copy only the value after the colon (<code>:</code>) into Singularity's <strong>Pairing Port</strong> field.</p></div></div>
+            <div class="step"><span class="step-number">10</span><div><h3>Pair the device</h3><p>Select <strong>Pair Device</strong> in Singularity.</p></div></div>
+            <div class="step"><span class="step-number">11</span><div><h3>Read the second port</h3><p>Return to the main Wireless Debugging screen—the screen where you selected the pairing option. Find its other <strong>IP address &amp; port</strong> value. This one is different. Copy the number after the colon.</p></div></div>
+            <div class="step"><span class="step-number">12</span><div><h3>Complete setup</h3><p>Use that second port value in Singularity, then select <strong>Complete Setup</strong>.</p></div></div>
           </div>
         </section>
 
@@ -128,9 +127,9 @@
           <h2>Root and reopen Singularity</h2>
 
           <div class="steps">
-            <div class="step"><span class="step-number">14</span><div><h3>Select Root Now</h3><p>Select <strong>Root Now</strong>. The headset may briefly behave erratically while the exploit runs; leave it alone and allow the process to finish.</p></div></div>
-            <div class="step"><span class="step-number">15</span><div><h3>Reopen Singularity</h3><p>From the app list, open the left menu—the three dots and lines beneath Search—then choose <strong>Untrusted Sources</strong> and reopen Singularity.</p></div></div>
-            <div class="step"><span class="step-number">16</span><div><h3>Enable Run on boot</h3><p>Turn on <strong>Run on boot</strong> in Singularity.</p></div></div>
+            <div class="step"><span class="step-number">13</span><div><h3>Select Root Now</h3><p>Select <strong>Root Now</strong>. The headset may briefly behave erratically while the exploit runs; leave it alone and allow the process to finish.</p></div></div>
+            <div class="step"><span class="step-number">14</span><div><h3>Reopen Singularity</h3><p>From the app list, open the left menu—the three dots and lines beneath Search—then choose <strong>Untrusted Sources</strong> and reopen Singularity.</p></div></div>
+            <div class="step"><span class="step-number">15</span><div><h3>Enable Run on boot</h3><p>Turn on <strong>Run on boot</strong> in Singularity.</p></div></div>
           </div>
         </section>
 
@@ -139,7 +138,7 @@
           <h2>Disable telemetry and updates</h2>
 
           <div class="steps">
-            <div class="step"><span class="step-number">17</span><div><h3>Configure AIO Tweaks</h3><p>Open <strong>AIO Tweaks &gt; Utils</strong>. Turn on <strong>Disable Meta telemetry</strong> and <strong>Disable the update engine</strong>.</p></div></div>
+            <div class="step"><span class="step-number">16</span><div><h3>Configure AIO Tweaks</h3><p>Open <strong>AIO Tweaks &gt; Utils</strong>. Turn on <strong>Disable Meta telemetry</strong> and <strong>Disable the update engine</strong>.</p></div></div>
           </div>
 
           <aside class="callout info"><h3>Additional source recommendations</h3><p>The community instructions also suggest disabling <strong>Meta Backdoor</strong> “for good measure.” For stricter blocking, enable <strong>Meta domain blocker with Updates</strong>, open <strong>Set up</strong> for the Domain Blocker, enable <strong>Updates/Firmware</strong> and <strong>Telemetry/Analytics</strong>, and enable the blocker on boot.</p></aside>
