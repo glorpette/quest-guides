@@ -53,7 +53,7 @@
           <div class="callout caution source-quote">
             <p><strong>BETA!</strong> BoltOn is in beta and is rapidly evolving. Changes and improvements will happen over time. BoltOn contains an automatic update feature, so only an initial setup is required.</p>
             <p><strong>Before you start: you need a rooted Meta Quest Pro.</strong> This program will not work on an unrooted headset or a different Quest model. If you still need to root your Quest Pro, use one of the root guides available on the homepage. Check that your headset's exact software version is supported by <a href="https://github.com/Lumince/singularity">Singularity</a> before following a root guide.</p>
-            <p><strong>BoltOn has multiple modes.</strong> BoltOn can be ran in Direct or VRCFaceTracking mode. Direct mode uses OSC over your streamer app to communicate directly to VRChat without the need for additional Software. VRCFaceTracking mode communicates to VRCFT over the streamer app and requires the <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">VRCFaceTracking software</a> to be installed on your PC through Steam.</p>
+            <p><strong>BoltOn has multiple modes.</strong> BoltOn can be ran in Direct or VRCFaceTracking mode. Direct mode uses OSC over your network to communicate directly to VRChat without the need for additional Software. VRCFaceTracking mode communicates to VRCFT over the streamer app and requires the <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">VRCFaceTracking software</a> to be installed on your PC through Steam.</p>
             <p><strong>Other streamers may be supported.</strong> BoltOn has been tested with Virtual Desktop, Steamlink, WiVRn and ALVR. Other streamers that expose face tracking traffic may also be compatible.</p>
           </div>
 
@@ -101,7 +101,7 @@
         <section id="mode" class="guide-section">
           <p class="section-kicker">Configuration</p>
           <h2>Selecting BoltOn Mode</h2>
-          <p>BoltOn has two modes of operation: Direct and VRCFaceTracking. Direct mode communicates directly with VRChat, while VRCFaceTracking mode communicates with the VRCFT software on your PC. Both methods communicate through your chosen VR streaming application (such as Virtual Desktop, Steam Link, WiVRn, etc).</p>
+          <p>BoltOn has two modes of operation: Direct and VRCFaceTracking. Direct mode communicates directly with VRChat over OSC on the network, while VRCFaceTracking mode communicates with the VRCFT software on your PC through your streamer app (such as Virtual Desktop, Steam Link, WiVRn, etc).</p>
           <p>Use this table as a starting point; recommendations can depend on your setup.</p>
           <div class="table-wrap">
             <table class="mode-table">
@@ -116,8 +116,8 @@
               <tbody>
                 <tr>
                   <th scope="row">Virtual Desktop</th>
-                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported</span></td>
-                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-star.svg" alt="" aria-hidden="true">Recommended, use VD Module**</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-star.svg" alt="" aria-hidden="true">Recommended</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported, use VD Module*</span></td>
                 </tr>
                 <tr>
                   <th scope="row">Steam Link</th>
@@ -126,8 +126,8 @@
                 </tr>
                 <tr>
                   <th scope="row">ALVR / ALXR / WiVRn</th>
-                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-cross.svg" alt="" aria-hidden="true">Not supported</span></td>
-                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported, use ALXR Local Module*</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-star.svg" alt="" aria-hidden="true">Recommended</span></td>
+                  <td><span class="mode-status"><img class="mode-status-icon" src="../../assets/icon-check.svg" alt="" aria-hidden="true">Supported, use ALXR Local Module**</span></td>
                 </tr>
                 <tr>
                   <th scope="row">Other / unlisted</th>
@@ -137,9 +137,12 @@
               </tbody>
             </table>
           </div>
+          <div class="callout info source-quote">
+            <p><strong>Note:</strong> Filtering on Direct mode is a work in progress. Use avatar smoothing for the time being if necessary.</p>
+          </div>
           <div class="callout caution source-quote">
-            <p>* With VRCFT and an ALXR-protocol streamer such as ALVR or WiVRn, enable <code>FBFaceTrackingV2TongueHack</code> in VRCFT's local ALXR module config for tongue tracking. Failure to do this will result in the tongue not tracking. If you are on Linux, that is at <strong>/home/&lt;username&gt;/.config/VRCFaceTracking/CustomLibs/&lt;generated id&gt;/ALXRModuleConfig.json</strong></p>
-            <p>** BoltOn makes Virtual Desktop think the device is a Galaxy XR and it may attempt to use AV1 Decoding. Do NOT use AV1 as it is not present on the Quest Pro and will crash the stream.</p>
+            <p>* BoltOn makes Virtual Desktop think the device is a Galaxy XR and it may attempt to use AV1 Decoding. Do NOT use AV1 as it is not present on the Quest Pro and will crash the stream.</p>
+            <p>** With VRCFT and an ALXR-protocol streamer such as ALVR or WiVRn, enable <code>FBFaceTrackingV2TongueHack</code> in VRCFT's local ALXR module config for tongue tracking. Failure to do this will result in the tongue not tracking. If you are on Linux, that is at <strong>/home/&lt;username&gt;/.config/VRCFaceTracking/CustomLibs/&lt;generated id&gt;/ALXRModuleConfig.json</strong></p>
           </div>
           <p>To select a mode, open the <strong>Settings</strong> tab in BoltOn Calibrator and choose <strong>Direct</strong> or <strong>VRCFT</strong>. BoltOn starts in VRCFT mode by default.</p>
           <p>If a mode is not working with your streamer, try the other mode where the table indicates it may be suitable.</p>
