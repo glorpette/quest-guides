@@ -24,7 +24,7 @@
       <h1>Root your Meta Quest<br><span>with Singularity</span></h1>
       <p class="device-list">Quest 2 <i>/</i> Quest Pro <i>/</i> Quest 3 <i>/</i> Quest 3S</p>
       <p class="guide-intro">Developer Mode, ADB, compatibility checks, installation, rooting, and a final root test—explained from a normally set up headset and a Windows or Linux PC.</p>
-      <div class="guide-meta"><span>Guide by <strong>Fwooffy</strong></span><span>Checked 24 Sep 2026</span></div>
+      <div class="guide-meta"><span>Guide by <strong>Fwooffy</strong></span><span>Checked 18 Nov 2026</span></div>
     </header>
 
     <div class="guide-shell">
@@ -46,15 +46,20 @@
 
       <article class="guide-article">
         <aside id="quest-pro-firmware-update" class="firmware-notice" aria-labelledby="quest-pro-firmware-title">
-          <p class="firmware-notice-label">Compatibility alert · Added 25 Sep 2026</p>
-          <h2 id="quest-pro-firmware-title">New Quest Pro firmware patches the root exploit</h2>
-          <p>Meta has patched the vulnerability used by this root exploit in newer Quest Pro firmware. Singularity therefore generally does not work after the headset receives the newer update. The latest confirmed vulnerable Quest Pro build in this guide's dated snapshot is <code>51503870024400340</code>.</p>
+          <p class="firmware-notice-label">Compatibility alert · Updated 18 Nov 2026</p>
+          <h2 id="quest-pro-firmware-title">New Quest firmware patches the root exploit</h2>
+          <p>Meta has patched the vulnerability used by this root exploit in newer Quest Pro firmware. Singularity therefore generally does not work after the headset receives the newer update. The latest confirmed vulnerable Quest builds in this guide's dated snapshot are: 
+            <code-block><br>Quest 3 (Eureka): 52433670036000520
+            <br>Quest 3s (Panther): 3814840024700610
+            <br>Quest 2 (Hollywood): 52371960014100150
+            <br>Quest Pro (Seacliff): 51583910014400340</code-block>
+          </p>
           <ul>
             <li>Run <code>adb shell getprop ro.build.version.incremental</code> and record the complete number from your own headset.</li>
             <li>If your Quest Pro reports a different or newer build, assume the exploit has been patched and will not work unless the project explicitly confirms otherwise.</li>
             <li>Do not update, install Singularity, or select <strong>Root Now</strong> unless your exact Quest Pro build is confirmed by the current project README, release notes, or maintainer guidance.</li>
           </ul>
-          <p class="firmware-notice-foot"><strong>Build-number notice:</strong> <code>51503870024400340</code> is the latest confirmed vulnerable Quest Pro build in the compatibility snapshot checked on 24 Sep 2026. It must not be treated as confirmation for a headset reporting any other build; newer firmware has patched the exploit.</p>
+          <p class="firmware-notice-foot"><strong>Build-number notice:</strong> <code>51583910014400340</code> is the latest confirmed vulnerable Quest Pro build in the compatibility snapshot checked on 18 Nov 2026. It must not be treated as confirmation for a headset reporting any other build; newer firmware has patched the exploit.</p>
         </aside>
 
         <aside class="callout warning">
@@ -180,10 +185,10 @@
 
           <div class="code-block"><div class="code-head"><span>Command Prompt / Terminal</span><button type="button" data-copy="adb shell getprop ro.build.version.incremental">Copy</button></div><pre><code>adb shell getprop ro.build.version.incremental</code></pre></div>
 
-          <h3 class="subsection-title">Dated build snapshot checked on 24 Sep 2026</h3>
-          <div class="table-wrap"><table><thead><tr><th>Headset</th><th>Project name</th><th>Incremental build</th></tr></thead><tbody><tr><td>Quest Pro</td><td>Seacliff</td><td><code>51503870024400340</code></td></tr><tr><td>Quest 3</td><td>Eureka</td><td><code>52433670036000520</code></td></tr><tr><td>Quest 3S</td><td>Panther</td><td><code>3814840024700610</code></td></tr><tr><td>Quest 2</td><td>Hollywood</td><td><code>52242990024200150</code></td></tr></tbody></table></div>
+          <h3 class="subsection-title">Dated build snapshot checked on 18 Nov 2026</h3>
+          <div class="table-wrap"><table><thead><tr><th>Headset</th><th>Project name</th><th>Incremental build</th></tr></thead><tbody><tr><td>Quest Pro</td><td>Seacliff</td><td><code>51583910014400340</code></td></tr><tr><td>Quest 3</td><td>Eureka</td><td><code>52433670036000520</code></td></tr><tr><td>Quest 3S</td><td>Panther</td><td><code>3814840024700610</code></td></tr><tr><td>Quest 2</td><td>Hollywood</td><td><code>52371960014100150</code></td></tr></tbody></table></div>
 
-          <aside class="callout caution"><h3>Stop before installing</h3><p>These numbers are a dated snapshot, not a guarantee for other builds. The latest confirmed vulnerable Quest Pro build shown here is <code>51503870024400340</code>. Meta has patched the exploit in newer Quest Pro firmware, so Singularity generally will not work after updating beyond the confirmed build. Open the live Singularity README and release notes, and continue only when your exact model and complete build number are confirmed there or by the maintainer. <strong>Do not assume a newer build works because an older one did.</strong></p></aside>
+          <aside class="callout caution"><h3>Stop before installing</h3><p>These numbers are a dated snapshot, not a guarantee for other builds. The latest confirmed vulnerable Quest Pro build shown here is <code>51583910014400340</code>. Meta has patched the exploit in newer Quest Pro firmware, so Singularity generally will not work after updating beyond the confirmed build. Open the live Singularity README and release notes, and continue only when your exact model and complete build number are confirmed there or by the maintainer. <strong>Do not assume a newer build works because an older one did.</strong></p></aside>
           <p class="footnote">Quest 1 and other variants have separate or less documented setup; do not use the shared Root Now steps for them without current model-specific instructions.</p>
         </section>
 
