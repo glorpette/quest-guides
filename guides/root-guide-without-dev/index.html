@@ -22,9 +22,9 @@
     <header class="guide-hero">
       <p class="eyebrow">New community method · In-headset setup</p>
       <h1>Root your Meta Quest<br><span>without Meta Developer Mode</span></h1>
-      <p class="device-list">No developer organization <i>/</i> No PC-side APK install <i>/</i> Singularity v1.0.6.8</p>
+      <p class="device-list">No developer organization <i>/</i> No PC-side APK install</p>
       <p class="guide-intro">This path installs Singularity from inside the headset, opens Android's hidden settings, and enables local Android debugging without first enabling Meta account-level Developer Mode.</p>
-      <div class="guide-meta"><span>Method shared by <strong>@veusepe</strong></span><span>Updated 11 Oct 2026</span></div>
+      <div class="guide-meta"><span>Method shared by <strong>@veusepe</strong></span><span>Updated 18 Nov 2026</span></div>
     </header>
 
     <div class="guide-shell">
@@ -50,11 +50,22 @@
 
           <aside class="callout caution compact-callout"><h3>New and community-sourced</h3><p>This method was transcribed from community instructions and has not been independently verified across every headset or firmware build. Rooting remains experimental and can cause crashes, data loss, or loss of device functionality.</p></aside>
 
-          <aside class="firmware-notice" aria-labelledby="patched-firmware-title">
-            <p class="firmware-notice-label">Do not update first</p>
-            <h2 id="patched-firmware-title">Newer firmware patches the exploit</h2>
-            <p>Meta has patched the vulnerability used by Singularity in newer firmware. The latest confirmed vulnerable Quest Pro build in this repository's dated snapshot is <code>51503870024400340</code>. If your headset reports a different or newer build, assume the exploit will not work unless the project explicitly confirms otherwise.</p>
-          </aside>
+          <aside id="quest-pro-firmware-update" class="firmware-notice" aria-labelledby="quest-pro-firmware-title">
+          <p class="firmware-notice-label">Compatibility alert · Updated 18 Nov 2026</p>
+          <h2 id="quest-pro-firmware-title">New Quest firmware patches the root exploit</h2>
+          <p>Meta has patched the vulnerability used by this root exploit in newer Quest Pro firmware. Singularity therefore generally does not work after the headset receives the newer update. The latest confirmed vulnerable Quest builds in this guide's dated snapshot are: 
+            <code-block><br>Quest 3 (Eureka): 52433670036000520
+            <br>Quest 3s (Panther): 3814840024700610
+            <br>Quest 2 (Hollywood): 52371960014100150
+            <br>Quest Pro (Seacliff): 51583910014400340</code-block>
+          </p>
+          <ul>
+            <li>Run <code>adb shell getprop ro.build.version.incremental</code> and record the complete number from your own headset.</li>
+            <li>If your Quest Pro reports a different or newer build, assume the exploit has been patched and will not work unless the project explicitly confirms otherwise.</li>
+            <li>Do not update, install Singularity, or select <strong>Root Now</strong> unless your exact Quest Pro build is confirmed by the current project README, release notes, or maintainer guidance.</li>
+          </ul>
+          <p class="firmware-notice-foot"><strong>Build-number notice:</strong> <code>51583910014400340</code> is the latest confirmed vulnerable Quest Pro build in the compatibility snapshot checked on 18 Nov 2026. It must not be treated as confirmation for a headset reporting any other build; newer firmware has patched the exploit.</p>
+        </aside>
 
           <aside class="callout warning">
             <h3>VERY IMPORTANT - READ FIRST OR RISK IRREPAIRABLE DAMAGE</h3>
@@ -150,7 +161,6 @@
           <div class="reference-group">
             <h3>Downloads and blocking list</h3>
             <a href="https://github.com/Lumince/singularity/blob/main/hosts"><strong>Singularity host-blocking list</strong><span>Telemetry, account, store, entitlement, media, and service hosts referenced by the source method</span></a>
-            <a href="https://www.meta.com/experiences/anexplorer-vr-file-manager/6091443354290737/"><strong>AnExplorer VR File Manager</strong><span>Meta Store file manager used to open and install the APK in-headset</span></a>
             <a href="https://github.com/Lumince/singularity/releases/tag/v1.0.6.8"><strong>Singularity v1.0.6.8</strong><span>The specific release referenced by the community method</span></a>
           </div>
           <div class="credits"><p><strong>Community method shared by @veusepe.</strong> The original instructions invite users who need help to DM <strong>@veusepe</strong>. This version reorganizes the method into a structured web guide. Interface labels are preserved from the original instructions and may vary slightly by headset or app version.</p><p>This method is separate from the standard Developer Mode guide and should be treated as experimental until it has been more broadly verified.</p></div>
