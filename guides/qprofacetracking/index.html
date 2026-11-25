@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Set up QproFaceTracking V2.0.2 for enhanced eye, tongue, and pupil tracking on a rooted Meta Quest Pro.">
   <meta name="theme-color" content="#112540">
-  <title>QproFaceTracking V2.0.2 Setup Guide</title>
+  <title>Qpro Companion Setup Guide</title>
   <link rel="canonical" href="https://guides.mxr.lol/guides/enhanced-face-tracking/">
   <link rel="icon" type="image/svg+xml" href="../../assets/meta-logo.svg">
   <link rel="stylesheet" href="../../assets/styles.css?v=20260927">
@@ -21,9 +21,9 @@
   <main id="guide-content">
     <header class="guide-hero">
       <p class="eyebrow">Quest Pro · Enhanced face tracking</p>
-      <h1>QproFaceTracking V2.0.2:<br><span>text setup guide</span></h1>
+      <h1>Qpro Companion:<br><span>text setup guide</span></h1>
       <p class="device-list">Independent eye gaze <i>/</i> Tongue tracking <i>/</i> Pupil dilation <i>/</i> USB or wireless ADB</p>
-      <p class="guide-intro">Set up the QproFaceTracking Hub and bridge for enhanced face tracking on a rooted Meta Quest Pro.</p>
+      <p class="guide-intro">Set up the Qpro Companion and bridge for enhanced face tracking on a rooted Meta Quest Pro.</p>
       <div class="guide-meta"><span>Guide and project by <strong>Fwooffy</strong></span><span><a href="https://github.com/Fwooffy/Qpro-Enhanced-FT-Wireless">Qpro-Enhanced-FT-Wireless</a></span></div>
     </header>
 
@@ -47,8 +47,9 @@
       <article class="guide-article source-guide">
         <section id="before-you-start" class="guide-section">
           <div class="callout caution source-quote">
-            <p><strong>Before you start: you need a rooted Meta Quest Pro and the latest VRCFaceTracking from Steam.</strong> This program will not work on an unrooted headset or a different Quest model. If you still need to root your Quest Pro, use <a href="https://github.com/glorpette/quest-guides/blob/main/root_guide_by_fwooffy.md">Fwooffy and glorpette's beginner root guide</a>. Check that your headset's exact software version is supported by <a href="https://github.com/Lumince/singularity">Singularity</a> before following a root guide. <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">Install or update VRCFaceTracking through Steam</a> before using Qpro's bridge.</p>
-            <p><strong>If you used a QproFaceTracking version before V2.0, record and train your tongue model again.</strong> Do not import a pre-V2.0 model and assume it will work correctly. A working V2.0 or V2.0.1 model can be exported and imported into V2.0.2. The included developer model is only a starting point.</p>
+            <p><strong>Before you start: you need a rooted Meta Quest Pro.</strong> This program will not work on an unrooted headset or a different Quest model. If you still need to root your Quest Pro, use one of the root guides available on the homepage. Check that your headset's exact software version is supported by <a href="https://github.com/Lumince/singularity">Singularity</a> before following a root guide.</p>
+            <p><strong>If you used a Qpro Companion version before V2.0, record and train your tongue model again.</strong> Do not import a pre-V2.0 model and assume it will work correctly. A working V2.0 or V2.0.1 model can be exported and imported into V2.0.2. The included developer model is only a starting point.</p>
+            <p><strong>Qpro Companion has multiple modes.</strong> Qpro Companion can be ran in Direct or VRCFaceTracking mode. Direct mode uses OSC over your network to communicate directly to VRChat without the need for additional Software. VRCFaceTracking mode communicates to VRCFT over the streamer app and requires the <a href="https://store.steampowered.com/app/3329480/VRCFaceTracking/">VRCFaceTracking software</a> to be installed on your PC through Steam.</p>
           </div>
 
           <p>Start with the headset's eye tracking, then set up the PC software. The <strong>Hub</strong> is the <code>QproFaceTracking.exe</code> program. <strong>ADB</strong> is the connection it uses to talk to your Quest. The <strong>bridge</strong> sends Qpro's tracking results to VRCFaceTracking.</p>
